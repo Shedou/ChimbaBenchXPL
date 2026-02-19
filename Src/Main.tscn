@@ -7,7 +7,40 @@
 
 script/script = ExtResource( 1 )
 
-[node name="GUI" type="Control" parent="."]
+[node name="Sprites" type="Control" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="Sprite 2" type="Sprite" parent="Sprites"]
+
+transform/pos = Vector2( 124, 168 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Sprites"]
+
+transform/pos = Vector2( 307.188, 179.402 )
+texture = ExtResource( 2 )
+
+[node name="GUI-MID" type="Panel" parent="."]
+
+visibility/self_opacity = 0.3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 40.0
+margin/right = 640.0
+margin/bottom = 330.0
+
+[node name="GUI-UP" type="Panel" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -16,76 +49,99 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 640.0
-margin/bottom = 360.0
+margin/bottom = 40.0
 
-[node name="Sprite 2" type="Sprite" parent="GUI"]
+[node name="Label1" type="Label" parent="GUI-UP"]
 
-transform/pos = Vector2( 124, 168 )
-texture = ExtResource( 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 5.0
+margin/right = 125.0
+margin/bottom = 35.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
-[node name="Sprite" type="Sprite" parent="GUI"]
-
-transform/pos = Vector2( 307.188, 179.402 )
-texture = ExtResource( 2 )
-
-[node name="Button" type="Button" parent="GUI"]
+[node name="GUI-DOWN" type="Panel" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 46.0
-margin/top = 39.0
-margin/right = 139.0
-margin/bottom = 68.0
+margin/left = 0.0
+margin/top = 330.0
+margin/right = 640.0
+margin/bottom = 360.0
+
+[node name="BTN-Exit" type="Button" parent="GUI-DOWN"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 5.0
+margin/right = 105.0
+margin/bottom = 25.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Button"
+text = "Exit"
 flat = false
 
-[node name="Label" type="Label" parent="GUI"]
+[node name="BTN-Settings" type="Button" parent="GUI-DOWN"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 17.0
-margin/top = 78.0
-margin/right = 138.0
-margin/bottom = 107.0
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+size_flags/vertical = 2
+margin/left = 115.0
+margin/top = 5.0
+margin/right = 215.0
+margin/bottom = 25.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Settings"
+flat = false
 
-[node name="Label1" type="Label" parent="GUI"]
+[node name="BTN-Benchmarks" type="Button" parent="GUI-DOWN"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 26.0
-margin/top = 313.0
-margin/right = 147.0
-margin/bottom = 342.0
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+size_flags/vertical = 2
+margin/left = 225.0
+margin/top = 5.0
+margin/right = 325.0
+margin/bottom = 25.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Benchmarks"
+flat = false
 
-[node name="Label2" type="Label" parent="GUI"]
+[node name="BTN-About" type="Button" parent="GUI-DOWN"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 199.0
-margin/top = 308.0
-margin/right = 320.0
-margin/bottom = 337.0
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+size_flags/vertical = 2
+margin/left = 335.0
+margin/top = 5.0
+margin/right = 435.0
+margin/bottom = 25.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "About"
+flat = false
 
-[connection signal="pressed" from="GUI/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GUI-DOWN/BTN-Exit" to="." method="_on_Button_pressed"]
+
+[connection signal="pressed" from="GUI-DOWN/BTN-Benchmarks" to="." method="_on_BTNBenchmarks_pressed"]
 
 
