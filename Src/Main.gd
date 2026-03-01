@@ -1,5 +1,28 @@
 extends Node
 
+const project_name = "ChimbabenchXPL"
+const project_version = "A2"
+const project_license = "GNU GPLv3 or later"
+
+var main_render_size = OS.get_video_mode_size() # Vector2()
+var main_display_size = OS.get_screen_size()
+var render_size_multiplier = 1.0
+const window_size_default = Vector2(640, 360)
+var window_size
+var wine_detect = ["no"]
+var main_cmd_line = null
+var main_cmd_execute = null
+var main_current_os = OS.get_name()
+var main_current_os_name = "undefined"
+var main_current_os_kernel = ["undefined"]
+var main_cpu_name = ["undefined"]
+var main_gpu_name = ["undefined"]
+var main_exe_dir = OS.get_executable_path().get_base_dir();
+
+var reference_texture = null
+var theme_default = load("res://Default_Theme.tres")
+var theme_default_big = load("res://Default_Theme_x2.tres")
+
 const timer_quad = 0.25; const timer_half = 0.5; const timer_full = 1.0
 var timer_quad_count = 0.0; var timer_half_count = 0.0; var timer_full_count = 0.0
 
@@ -20,32 +43,68 @@ const bench_warm_time = 16
 
 var bench_start = 0; var bench_warm = 0
 var bench = 0.0; var bench_count = 0; var bench_result = 0
+var bench_fps_start = 0; var bench_fps_start_collected = 0
+var bench_strange_flag = ""
 
 func _ready():
+	main_cmd_line = OS.get_cmdline_args()
+	main_cmd_execute = OS.get_executable_path()
+	var full_command = str(OS.get_executable_path()) + " " + str(StringArray(OS.get_cmdline_args()).append(" "))
+	get_hw_info()
+	
 	set_process(true); set_fixed_process(true)
+	get_tree().get_root().connect("size_changed", self, "on_resize");
+	
 	OS.set_target_fps(process_target_fps_def)
 	OS.set_iterations_per_second(process_fixed_target_fps_def)
+	reference_set("Default")
 
-func _process(delta):
-	fps_monitor_process(delta)
-
-func _fixed_process(delta):
-	fps_monitor_fixed_process(delta)
+func get_hw_info():
+	main_cpu_name[0] = "not detected"
+	main_gpu_name[0] = "not detected"
+	if main_current_os == "Windows":
+		main_current_os_name = "Windows"
+		OS.execute(main_exe_dir+"\\Helpers\\Wine-Detect.bat", [""], true, wine_detect)
+		OS.execute(main_exe_dir+"\\Helpers\\Windows-CPU-Info.bat", [""], true, main_cpu_name)
+		OS.execute(main_exe_dir+"\\Helpers\\Windows-GPU-Info.bat", [""], true, main_gpu_name)
+	elif main_current_os == "X11":
+		OS.execute("uname", ["-r"], true, main_current_os_kernel)
+		main_current_os_name = "Linux"
+		OS.execute("bash", ["-c", "cat /proc/cpuinfo | grep 'model name' | head -n1 | cut -d: -f2 | sed 's/^[ \t]*//'"], true, main_cpu_name)
+		OS.execute("bash", ["-c", "cat /sys/class/drm/card*/device/uevent | grep PCI_ID | cut -d'=' -f2"], true, main_gpu_name)
+		if main_gpu_name[0] == "":
+			OS.execute("bash", ["-c", "lspci | grep -iE 'vga|3d|display' | cut -d':' -f3 | sed 's/^ //'"], true, main_gpu_name)
 	
+	var wine_detect_regex = RegEx.new()
+	wine_detect_regex.compile("WINE")
+	var result = wine_detect_regex.find(str(wine_detect[0]))
+	
+	if result == 0: main_current_os_name = "Windows (WINE)"
+	
+	get_node("GUI_UP/CPU").set_text(str(main_cpu_name[0]))
+	get_node("GUI_UP/VGA").set_text(str(main_gpu_name[0]))
+	get_node("GUI_UP/display").set_text("Display: "+str(main_display_size.x)+"x"+str(main_display_size.y))
+	get_node("GUI_UP/OS").set_text("OS: "+str(main_current_os_name))
+
+
+func reference_set(name):
+	if render_size_multiplier == 2.0: reference_texture = load("res://References/"+name+"580.webp")
+	else: reference_texture = load("res://References/"+name+"290.webp")
+	get_node("GUI_MID/Reference").set_texture(reference_texture)
+
+func _process(delta): fps_monitor_process(delta)
+func _fixed_process(delta): fps_monitor_fixed_process(delta)
 	timer_half_count += delta
 	if timer_half_count >= timer_half: timer_half_count = 0.0
 		adaptive_fps()
-		
 		if bench_start == 1:
 			benchmark()
-		
-		update_gui()
+		update_gui_up()
 
-func update_gui():
-	get_node("GUI-UP/Label1").set_text("Fps core: "+str(round(process_fixed_fps))+" Fps: "+str(round(process_fps))+" Result: "+str(bench_result))
-
-func _on_Button_pressed():
-	get_tree().quit()
+func update_gui_up():
+	get_node("GUI_UP/fps").set_text("Core fps: "+str(round(process_fixed_fps))+" fps: "+str(round(process_fps)))
+	get_node("GUI_UP/benchmark").set_text(bench_strange_flag+"Result: "+str(bench_result))
+	
 
 func fps_monitor_process(delta):
 	process_timer += delta;
@@ -65,7 +124,7 @@ func fps_monitor_fixed_process(delta):
 
 func adaptive_fps():
 	if process_fps < process_fixed_target_fps_low_bound:
-		if process_fixed_target_fps > process_fixed_target_fps_low_bound:
+		if process_fixed_target_fps > process_fixed_target_fps_low_bound || process_fixed_target_fps == 0:
 			process_fixed_target_fps = process_fixed_target_fps_low
 			OS.set_iterations_per_second(process_fixed_target_fps)
 	elif process_fps > process_fixed_target_fps_low_bound:
@@ -75,29 +134,94 @@ func adaptive_fps():
 func benchmark():
 	bench_warm += 1
 	bench_result = "Wait..."
-	get_node("Sprites/Sprite 2").set_pos(Vector2(int(rand_range(0,640)),int(rand_range(0,360))))
 	if bench_warm >= bench_warm_time:
+		if bench_fps_start_collected == 0:
+			bench_fps_start = round(process_fps)
+			bench_fps_start_collected = 1
 		bench_result = "Tesing..."
 		bench += process_fps
 		bench_count += 1
 		if bench_count >= bench_period:
 			bench_result = round(bench / bench_period)
-			bench = 0.0
-			bench_count = 0
-			bench_start = 0
-			bench_warm = 0
-			get_node("GUI-DOWN/BTN-Benchmarks").set_pressed(false)
+			if bench_result > 2000:
+				if (bench_fps_start+300.0) < bench_result || (bench_fps_start-300.0) > bench_result:
+					bench_strange_flag = ".!. "
+			elif bench_result > 200:
+				if (bench_fps_start+80.0) < bench_result || (bench_fps_start-80.0) > bench_result:
+					bench_strange_flag = ".!. "
+			elif bench_result > 20:
+				if (bench_fps_start+20.0) < bench_result || (bench_fps_start-20.0) > bench_result:
+					bench_strange_flag = ".!. "
+			
+			benchmark_reset(bench_result)
+			
+			get_node("GUI_DOWN/BTN_Benchmark").set_pressed(false)
+			get_node("GUI_DOWN").menu_unblock()
 
-func _on_BTNBenchmarks_pressed():
+func benchmark_start():
 	if bench_start == 0:
+		benchmark_reset("Bench start...")
 		bench_start = 1
 		process_target_fps = process_target_fps_max
 		OS.set_target_fps(process_target_fps)
+		get_node("GUI_DOWN").menu_block()
+		get_node("GUI_DOWN").menu_close()
 	else:
-		bench_result = "Aborted..."
-		bench_start = 0
-		bench = 0.0
-		bench_count = 0
-		bench_warm = 0
-		process_target_fps = process_target_fps_def
-		OS.set_target_fps(process_target_fps)
+		benchmark_reset("Aborted...")
+		get_node("GUI_DOWN").menu_unblock()
+
+func benchmark_reset(reason):
+	bench_result = reason
+	bench_start = 0; bench = 0.0; bench_count = 0; bench_warm = 0
+	bench_fps_start = 0; bench_fps_start_collected = 0
+	if str(reason) == "Aborted..." || str(reason) == "New settings..." || str(reason) == "Bench start...":
+		bench_strange_flag = ""
+
+func on_resize():
+	main_render_size = OS.get_video_mode_size()
+	benchmark_reset("New settings...")
+
+var all_nodes = [
+"GUI_MID",
+"GUI_MID/Scenes",
+"GUI_MID/Scenes/Settings",
+"GUI_MID/Scenes/Settings/Label", "GUI_MID/Scenes/Settings/Resolution",
+"GUI_MID/Scenes/Settings/Resolution_Button", "GUI_MID/Scenes/Settings/Settings_Apply",
+"GUI_MID/Scenes/List",
+"GUI_MID/Scenes/List/Label", "GUI_MID/Scenes/List/Select_Scene", "GUI_MID/Scenes/List/Scene_Load", "GUI_MID/Scenes/List/Description",
+"GUI_MID/About",
+"GUI_MID/About/Background",
+"GUI_MID/About/Icon",
+"GUI_MID/About/Project_URL",
+"GUI_MID/About/GitHub_URL",
+"GUI_MID/About/Blog_URL",
+"GUI_MID/About/Developers",
+"GUI_MID/About/Lead_Developer",
+"GUI_MID/About/Background/Project_Name",
+"GUI_MID/About/Background/Project_License",
+"GUI_MID/About/Background/Godot_Engine",
+"GUI_MID/Reference",
+"GUI_UP",
+"GUI_UP/fps", "GUI_UP/benchmark", "GUI_UP/VGA", "GUI_UP/CPU", "GUI_UP/OS", "GUI_UP/display",
+"GUI_DOWN",
+"GUI_DOWN/BTN_Exit", "GUI_DOWN/BTN_Scenes", "GUI_DOWN/BTN_About", "GUI_DOWN/BTN_Benchmark", "GUI_DOWN/BTN_Reference"
+]
+
+func resize_multi(multiplier):
+	main_display_size = OS.get_screen_size()
+	if window_size_default * multiplier <= main_display_size:
+		window_size = window_size_default * multiplier
+		OS.set_window_size(window_size)
+		OS.set_window_position(main_display_size / 2 - window_size / 2)
+		for item in all_nodes:
+			if get_node(item).has_method("set_theme"): get_node(item).set_theme(theme_default)
+			if get_node(item).has_method("get_size"):
+				get_node(item).set_size(get_node(item).get_size() / render_size_multiplier)
+			get_node(item).set_pos(get_node(item).get_pos() / render_size_multiplier)
+		for item in all_nodes:
+			if get_node(item).has_method("set_theme"):
+				if multiplier == 2.0: get_node(item).set_theme(theme_default_big)
+			if get_node(item).has_method("get_size"):
+				get_node(item).set_size(get_node(item).get_size() * multiplier)
+			get_node(item).set_pos(get_node(item).get_pos() * multiplier)
+		render_size_multiplier = multiplier

@@ -1,0 +1,7 @@
+Example of importing flags for "some_image.webp.flags" (Godot 2.1 does not save flags for webp resources):
+gen_mipmaps=false
+repeat=false
+anisotropic=false
+tolinear=false
+mirroredrepeat=false
+filter=true

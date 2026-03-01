@@ -1,0 +1,18 @@
+
+CPU NAME WINDOWS
+for /f "tokens=2,*" %a in ('reg query "HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0" /v ProcessorNameString ^| findstr /i "ProcessorNameString"') do @echo %b
+
+for /f "tokens=2,*" %a in ('reg query "HKLM\HARDWARE\DESCRIPTION\System\CentralProcessor\0" /v ProcessorNameString ^| find "REG_SZ"') do @echo %b
+
+reg query "HKLM\HARDWARE\DESCRIPTION\System\CentralProcessor\0" /v ProcessorNameString | findstr /v "HKEY_ VERSION"
+
+wmic path Win32_VideoController get Name
+
+
+wmic path win32_VideoController get name /value | findstr /r /v "^$"
+
+
+
+for /f "tokens=2,*" %a in ('reg query "HKLM\HARDWARE\DESCRIPTION\System\CentralProcessor\0" /v ProcessorNameString ^| find "REG_SZ"') do @echo %b
+
+for /f "tokens=2 delims==" %a in ('wmic path win32_VideoController get name /value ^| find "Name="') do @echo %a
