@@ -1,6 +1,8 @@
 # ChimbaBenchXPL [![Github Releases](https://img.shields.io/github/downloads/Shedou/ChimbaBenchXPL/total.svg)](https://github.com/Shedou/ChimbaBenchXPL/releases)
 Portable benchmark for old or weak computers (Windows XP+ | Debian 8+ | OpenGL 2.1+).
 
+Download: [https://github.com/Shedou/ChimbaBenchXPL/releases](https://github.com/Shedou/ChimbaBenchXPL/releases)
+
 ## System requirements:
 OS (32-bit): Windows XP+, Debian 8+.\
 OS (64-bit): Windows 7+, Debian 8+.\
