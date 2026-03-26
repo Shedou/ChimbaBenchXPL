@@ -1,22 +1,26 @@
 extends Node
 
-const project_name = "ChimbabenchXPL"
-const project_version = "A2"
+const project_name = "ChimbaBenchXPL"
+const project_version = "A3"
 const project_license = "GNU GPLv3 or later"
 
 var main_render_size = OS.get_video_mode_size() # Vector2()
 var main_display_size = OS.get_screen_size()
+var main_rd_sizes = str(str(main_render_size.width)+"x"+str(main_render_size.height))+" - "+str(str(main_display_size.width)+"x"+str(main_display_size.height))
 var render_size_multiplier = 1.0
 const window_size_default = Vector2(640, 360)
 var window_size
 var wine_detect = ["no"]
-var main_cmd_line = null
-var main_cmd_execute = null
+var main_cmd_line = OS.get_cmdline_args()
+var main_cmd_execute = OS.get_executable_path()
+var main_execute_path = main_cmd_execute.get_base_dir()
 var main_current_os = OS.get_name()
 var main_current_os_name = "undefined"
 var main_current_os_kernel = ["undefined"]
 var main_cpu_name = ["undefined"]
+var main_cpu_name_str = ""
 var main_gpu_name = ["undefined"]
+var main_gpu_name_str = ""
 var main_exe_dir = OS.get_executable_path().get_base_dir();
 
 var reference_texture = null
@@ -46,11 +50,17 @@ var bench = 0.0; var bench_count = 0; var bench_result = 0
 var bench_fps_start = 0; var bench_fps_start_collected = 0
 var bench_strange_flag = ""
 
+var result_file = File.new()
+var result_file_path = ""
+var result_file_code = null
+var loaded_scene = "Main Menu"
+
 func _ready():
-	main_cmd_line = OS.get_cmdline_args()
-	main_cmd_execute = OS.get_executable_path()
+	result_file_path = str(main_execute_path+"/Benchmark-Result.txt")
 	var full_command = str(OS.get_executable_path()) + " " + str(StringArray(OS.get_cmdline_args()).append(" "))
+	OS.set_window_title(str(project_name)+" - "+str(project_version))
 	get_hw_info()
+	update_hw_info_labels()
 	
 	set_process(true); set_fixed_process(true)
 	get_tree().get_root().connect("size_changed", self, "on_resize");
@@ -66,7 +76,7 @@ func get_hw_info():
 		main_current_os_name = "Windows"
 		OS.execute(main_exe_dir+"\\Helpers\\Wine-Detect.bat", [""], true, wine_detect)
 		OS.execute(main_exe_dir+"\\Helpers\\Windows-CPU-Info.bat", [""], true, main_cpu_name)
-		OS.execute(main_exe_dir+"\\Helpers\\Windows-GPU-Info.bat", [""], true, main_gpu_name)
+		OS.execute(main_exe_dir+"\\Helpers\\Windows-GPU-Info.exe", [""], true, main_gpu_name)
 	elif main_current_os == "X11":
 		OS.execute("uname", ["-r"], true, main_current_os_kernel)
 		main_current_os_name = "Linux"
@@ -75,17 +85,20 @@ func get_hw_info():
 		if main_gpu_name[0] == "":
 			OS.execute("bash", ["-c", "lspci | grep -iE 'vga|3d|display' | cut -d':' -f3 | sed 's/^ //'"], true, main_gpu_name)
 	
+	main_cpu_name_str = str(main_cpu_name[0])
+	main_gpu_name_str = str(main_gpu_name[0])
+	
 	var wine_detect_regex = RegEx.new()
 	wine_detect_regex.compile("WINE")
 	var result = wine_detect_regex.find(str(wine_detect[0]))
 	
 	if result == 0: main_current_os_name = "Windows (WINE)"
-	
+
+func update_hw_info_labels():
 	get_node("GUI_UP/CPU").set_text(str(main_cpu_name[0]))
 	get_node("GUI_UP/VGA").set_text(str(main_gpu_name[0]))
-	get_node("GUI_UP/display").set_text("Display: "+str(main_display_size.x)+"x"+str(main_display_size.y))
+	get_node("GUI_UP/display").set_text(main_rd_sizes)
 	get_node("GUI_UP/OS").set_text("OS: "+str(main_current_os_name))
-
 
 func reference_set(name):
 	if render_size_multiplier == 2.0: reference_texture = load("res://References/"+name+"580.webp")
@@ -104,7 +117,6 @@ func _fixed_process(delta): fps_monitor_fixed_process(delta)
 func update_gui_up():
 	get_node("GUI_UP/fps").set_text("Core fps: "+str(round(process_fixed_fps))+" fps: "+str(round(process_fps)))
 	get_node("GUI_UP/benchmark").set_text(bench_strange_flag+"Result: "+str(bench_result))
-	
 
 func fps_monitor_process(delta):
 	process_timer += delta;
@@ -138,7 +150,7 @@ func benchmark():
 		if bench_fps_start_collected == 0:
 			bench_fps_start = round(process_fps)
 			bench_fps_start_collected = 1
-		bench_result = "Tesing..."
+		bench_result = "Testing..."
 		bench += process_fps
 		bench_count += 1
 		if bench_count >= bench_period:
@@ -177,9 +189,55 @@ func benchmark_reset(reason):
 	if str(reason) == "Aborted..." || str(reason) == "New settings..." || str(reason) == "Bench start...":
 		bench_strange_flag = ""
 
+func result_save():
+	var tdate = OS.get_date().values()
+	var ttime = OS.get_time().values()
+	var tDay = str(tdate[1]); var tMonth = str(tdate[2]); var tYear = str(tdate[3])
+	var tSec = str(ttime[0]); var tHour = str(ttime[1]); var tMin = str(ttime[2])
+	tDay = fix_digit(tDay); tMonth = fix_digit(tMonth); tYear = fix_digit(tYear);
+	tSec = fix_digit(tSec); tHour = fix_digit(tHour); tMin = fix_digit(tMin);
+	
+	if result_file.file_exists(result_file_path):
+		result_file_code = result_file.open(result_file_path, File.READ_WRITE)
+	else:
+		result_file_code = result_file.open(result_file_path, File.WRITE)
+		result_file_code = result_file.open(result_file_path, File.READ_WRITE)
+	
+	if result_file_code == OK:
+		result_file.seek_end()
+		result_file.store_string("\n")
+		result_file.store_string(project_name+" "+project_version+" ("+main_current_os_name+")")
+		result_file.store_string(" ("+tYear+"-"+tMonth+"-"+tDay+" - "+tHour+":"+tMin+":"+tSec+")\n")
+		result_file.store_string("CPU: "+main_cpu_name_str.replace("\n", "")+"\n")
+		result_file.store_string("GPU: "+main_gpu_name_str.replace("\n", "")+"\n")
+		result_file.store_string("Resolution: "+main_rd_sizes+"\n")
+		result_file.store_string("Result (fps - Scene): "+str(bench_result)+" - "+loaded_scene)
+		result_file.store_string("\n")
+		result_file.close()
+	else:
+		print("result_file_code: ", result_file_code)
+	pass
+
+func fix_digit(digit):
+	var fixed = digit
+	if digit == "0": fixed = "00"
+	elif digit == "1": fixed = "01"
+	elif digit == "2": fixed = "02"
+	elif digit == "3": fixed = "03"
+	elif digit == "4": fixed = "04"
+	elif digit == "5": fixed = "05"
+	elif digit == "6": fixed = "06"
+	elif digit == "7": fixed = "07"
+	elif digit == "8": fixed = "08"
+	elif digit == "9": fixed = "09"
+	return fixed
+
 func on_resize():
 	main_render_size = OS.get_video_mode_size()
+	main_rd_sizes = str(str(main_render_size.width)+"x"+str(main_render_size.height))+" - "+str(str(main_display_size.width)+"x"+str(main_display_size.height))
+	
 	benchmark_reset("New settings...")
+	update_hw_info_labels()
 
 var all_nodes = [
 "GUI_MID",
@@ -201,10 +259,13 @@ var all_nodes = [
 "GUI_MID/About/Background/Project_License",
 "GUI_MID/About/Background/Godot_Engine",
 "GUI_MID/Reference",
+"GUI_MID/Results",
+"GUI_MID/Results/Background",
 "GUI_UP",
 "GUI_UP/fps", "GUI_UP/benchmark", "GUI_UP/VGA", "GUI_UP/CPU", "GUI_UP/OS", "GUI_UP/display",
 "GUI_DOWN",
-"GUI_DOWN/BTN_Exit", "GUI_DOWN/BTN_Scenes", "GUI_DOWN/BTN_About", "GUI_DOWN/BTN_Benchmark", "GUI_DOWN/BTN_Reference"
+"GUI_DOWN/BTN_Exit", "GUI_DOWN/BTN_Scenes", "GUI_DOWN/BTN_About", "GUI_DOWN/BTN_Results",
+"GUI_DOWN/BTN_Benchmark", "GUI_DOWN/BTN_Save", "GUI_DOWN/BTN_Reference"
 ]
 
 func resize_multi(multiplier):
@@ -225,3 +286,4 @@ func resize_multi(multiplier):
 				get_node(item).set_size(get_node(item).get_size() * multiplier)
 			get_node(item).set_pos(get_node(item).get_pos() * multiplier)
 		render_size_multiplier = multiplier
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Main_Scene_Node.gd" type="Script" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://Main_GUI_MID_Scenes.gd" type="Script" id=4]
 [ext_resource path="res://Main_GUI_MID_About.gd" type="Script" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://References/Default290.webp" type="Texture" id=7]
-[ext_resource path="res://Main_GUI_DOWN.gd" type="Script" id=8]
+[ext_resource path="res://Main_GUI_MID_Results.gd" type="Script" id=7]
+[ext_resource path="res://References/Default290.webp" type="Texture" id=8]
+[ext_resource path="res://Main_GUI_DOWN.gd" type="Script" id=9]
 
 [node name="Main" type="Node"]
 
@@ -32,7 +33,6 @@ margin/bottom = 330.0
 
 [node name="Scenes" type="Control" parent="GUI_MID"]
 
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -45,15 +45,16 @@ script/script = ExtResource( 4 )
 
 [node name="Settings" type="Panel" parent="GUI_MID/Scenes"]
 
+editor/display_folded = true
 visibility/self_opacity = 0.7
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 10.0
-margin/top = 11.0
+margin/top = 10.0
 margin/right = 300.0
-margin/bottom = 281.0
+margin/bottom = 280.0
 
 [node name="Label" type="Label" parent="GUI_MID/Scenes/Settings"]
 
@@ -120,9 +121,9 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 3 )
 margin/left = 85.0
-margin/top = 246.0
+margin/top = 244.0
 margin/right = 205.0
-margin/bottom = 268.0
+margin/bottom = 266.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -131,6 +132,7 @@ flat = false
 
 [node name="List" type="Panel" parent="GUI_MID/Scenes"]
 
+editor/display_folded = true
 visibility/self_opacity = 0.7
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -204,9 +206,9 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 3 )
 margin/left = 95.0
-margin/top = 245.0
+margin/top = 244.0
 margin/right = 240.0
-margin/bottom = 267.0
+margin/bottom = 266.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -342,9 +344,10 @@ margin/left = 210.0
 margin/top = 40.0
 margin/right = 620.0
 margin/bottom = 210.0
-text = "- Textures and images are licensed under CC BY-SA 4.
+text = "- Godot Engine: MIT License (https://godotengine.org/license).
+- Textures and images are licensed under CC BY-SA 4.
 - Main used font: determination2 ( Anonymous ).
-- Developers: ..."
+- Contributors: ..."
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
@@ -401,10 +404,85 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Results" type="Control" parent="GUI_MID"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 640.0
+margin/bottom = 290.0
+script/script = ExtResource( 7 )
+
+[node name="Background" type="Panel" parent="GUI_MID/Results"]
+
+visibility/self_opacity = 0.9
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 3 )
+margin/left = 10.0
+margin/top = 0.0
+margin/right = 630.0
+margin/bottom = 290.0
+
+[node name="Select_List_Scene" type="OptionButton" parent="GUI_MID/Results"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 3 )
+margin/left = 20.0
+margin/top = 3.0
+margin/right = 275.0
+margin/bottom = 27.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="Select_List" type="OptionButton" parent="GUI_MID/Results"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 3 )
+margin/left = 365.0
+margin/top = 3.0
+margin/right = 620.0
+margin/bottom = 27.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="ItemList" type="ItemList" parent="GUI_MID/Results"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 3 )
+margin/left = 10.0
+margin/top = 30.0
+margin/right = 630.0
+margin/bottom = 290.0
+
 [node name="Reference" type="Sprite" parent="GUI_MID"]
 
 visibility/visible = false
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 centered = false
 region_rect = Rect2( 0, 0, 640, 290 )
 
@@ -431,6 +509,7 @@ margin/left = 5.0
 margin/top = 5.0
 margin/right = 165.0
 margin/bottom = 21.0
+text = "fps"
 valign = 1
 autowrap = true
 percent_visible = 1.0
@@ -448,6 +527,7 @@ margin/left = 165.0
 margin/top = 5.0
 margin/right = 310.0
 margin/bottom = 21.0
+text = "size"
 valign = 1
 autowrap = true
 percent_visible = 1.0
@@ -465,6 +545,7 @@ margin/left = 165.0
 margin/top = 21.0
 margin/right = 310.0
 margin/bottom = 37.0
+text = "os"
 valign = 1
 autowrap = true
 percent_visible = 1.0
@@ -482,6 +563,7 @@ margin/left = 5.0
 margin/top = 21.0
 margin/right = 165.0
 margin/bottom = 37.0
+text = "result"
 valign = 1
 autowrap = true
 percent_visible = 1.0
@@ -538,7 +620,7 @@ margin/left = 0.0
 margin/top = 330.0
 margin/right = 640.0
 margin/bottom = 360.0
-script/script = ExtResource( 8 )
+script/script = ExtResource( 9 )
 
 [node name="BTN_Exit" type="Button" parent="GUI_DOWN"]
 
@@ -548,61 +630,101 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 3 )
 margin/left = 5.0
-margin/top = 5.0
-margin/right = 105.0
-margin/bottom = 25.0
+margin/top = 4.0
+margin/right = 65.0
+margin/bottom = 26.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Exit"
 flat = false
 
-[node name="BTN_Scenes" type="Button" parent="GUI_DOWN"]
-
-rect/rotation = 0.01
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-theme/theme = ExtResource( 3 )
-margin/left = 115.0
-margin/top = 5.0
-margin/right = 215.0
-margin/bottom = 25.0
-toggle_mode = true
-enabled_focus_mode = 2
-shortcut = null
-text = "Scenes"
-flat = false
-
 [node name="BTN_About" type="Button" parent="GUI_DOWN"]
 
+hint/tooltip = "About the program and the authors."
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
 theme/theme = ExtResource( 3 )
-margin/left = 225.0
-margin/top = 5.0
-margin/right = 325.0
-margin/bottom = 25.0
+margin/left = 75.0
+margin/top = 4.0
+margin/right = 155.0
+margin/bottom = 26.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 text = "About"
 flat = false
 
+[node name="BTN_Results" type="Button" parent="GUI_DOWN"]
+
+hint/tooltip = "About the program and the authors."
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+theme/theme = ExtResource( 3 )
+margin/left = 165.0
+margin/top = 4.0
+margin/right = 245.0
+margin/bottom = 26.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Results"
+flat = false
+
+[node name="BTN_Scenes" type="Button" parent="GUI_DOWN"]
+
+rect/rotation = 0.01
+hint/tooltip = "Here you can load test scenes and change settings."
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 3 )
+margin/left = 255.0
+margin/top = 4.0
+margin/right = 335.0
+margin/bottom = 26.0
+toggle_mode = true
+is_pressed = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Scenes"
+flat = false
+
+[node name="BTN_Save" type="Button" parent="GUI_DOWN"]
+
+hint/tooltip = "About the program and the authors."
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+theme/theme = ExtResource( 3 )
+margin/left = 350.0
+margin/top = 4.0
+margin/right = 410.0
+margin/bottom = 26.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Save..."
+flat = false
+
 [node name="BTN_Benchmark" type="Button" parent="GUI_DOWN"]
 
+hint/tooltip = "Start performance test!"
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 3 )
 margin/left = 425.0
-margin/top = 5.0
+margin/top = 4.0
 margin/right = 525.0
-margin/bottom = 25.0
+margin/bottom = 26.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
@@ -617,9 +739,9 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 3 )
 margin/left = 535.0
-margin/top = 5.0
+margin/top = 4.0
 margin/right = 635.0
-margin/bottom = 25.0
+margin/bottom = 26.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
@@ -642,9 +764,13 @@ flat = false
 
 [connection signal="pressed" from="GUI_DOWN/BTN_Exit" to="GUI_DOWN" method="_on_BTN_Exit_pressed"]
 
+[connection signal="pressed" from="GUI_DOWN/BTN_About" to="GUI_DOWN" method="_on_BTN_About_pressed"]
+
+[connection signal="pressed" from="GUI_DOWN/BTN_Results" to="GUI_DOWN" method="_on_BTN_Results_pressed"]
+
 [connection signal="pressed" from="GUI_DOWN/BTN_Scenes" to="GUI_DOWN" method="_on_BTN_Scenes_pressed"]
 
-[connection signal="pressed" from="GUI_DOWN/BTN_About" to="GUI_DOWN" method="_on_BTN_About_pressed"]
+[connection signal="pressed" from="GUI_DOWN/BTN_Save" to="GUI_DOWN" method="_on_BTN_Save_pressed"]
 
 [connection signal="pressed" from="GUI_DOWN/BTN_Benchmark" to="GUI_DOWN" method="_on_BTN_Benchmark_pressed"]
 

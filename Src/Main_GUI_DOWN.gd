@@ -4,19 +4,23 @@ var root = "/root/Main";
 
 var menu_items = {
 	"Scenes":root+"/GUI_MID/Scenes",
-	"Reference":root+"/GUI_MID/Reference",
-	"About":root+"/GUI_MID/About"
+	"About":root+"/GUI_MID/About",
+	"Results":root+"/GUI_MID/Results",
+	"Reference":root+"/GUI_MID/Reference"
 }
 var menu_buttons = {
 	"Scenes":root+"/GUI_DOWN/BTN_Scenes",
-	"Reference":root+"/GUI_DOWN/BTN_Reference",
-	"About":root+"/GUI_DOWN/BTN_About"
+	"About":root+"/GUI_DOWN/BTN_About",
+	"Results":root+"/GUI_DOWN/BTN_Results",
+	"Reference":root+"/GUI_DOWN/BTN_Reference"
 }
 
 var menu_buttons_block_list = {
 	"Exit":root+"/GUI_DOWN/BTN_Exit",
 	"Scenes":root+"/GUI_DOWN/BTN_Scenes",
 	"About":root+"/GUI_DOWN/BTN_About",
+	"Results":root+"/GUI_DOWN/BTN_Results",
+	"Save":root+"/GUI_DOWN/BTN_Save",
 	"Reference":root+"/GUI_DOWN/BTN_Reference"
 }
 
@@ -52,3 +56,5 @@ func _on_BTN_Scenes_pressed(): menu_change("Scenes")
 func _on_BTN_About_pressed(): menu_change("About")
 func _on_BTN_Benchmark_pressed(): get_node("../.").benchmark_start()
 func _on_BTN_Reference_pressed(): menu_change("Reference")
+func _on_BTN_Results_pressed(): menu_change("Results")
+func _on_BTN_Save_pressed(): get_node("../.").result_save()
