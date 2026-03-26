@@ -762,6 +762,10 @@ flat = false
 
 [connection signal="pressed" from="GUI_MID/About/Blog_URL" to="GUI_MID/About" method="_on_Blog_URL_pressed"]
 
+[connection signal="item_selected" from="GUI_MID/Results/Select_List_Scene" to="GUI_MID/Results" method="_on_Select_List_Scene_item_selected"]
+
+[connection signal="item_selected" from="GUI_MID/Results/Select_List" to="GUI_MID/Results" method="_on_Select_List_item_selected"]
+
 [connection signal="pressed" from="GUI_DOWN/BTN_Exit" to="GUI_DOWN" method="_on_BTN_Exit_pressed"]
 
 [connection signal="pressed" from="GUI_DOWN/BTN_About" to="GUI_DOWN" method="_on_BTN_About_pressed"]
