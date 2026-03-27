@@ -1,16 +1,9 @@
-Simple Scene - 640x360 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1Adrenalin 26.3.1Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
-Simple Scene - 640x360 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
-Simple Scene - 640x360 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
-Simple Scene - 640x360 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
+Shader Test : 640x360 : Complex (All Platforms)
+Fps - Platform - GPU - CPU - Driver - Model
+======================================================================================
+999 fps - Windows 10 - RTX 3060M (120W) - i7-10875H (<75W) - NVIDIA 595.97 - MONSTER Tulpar T7 v20.3 (Turbo Mode)
+888 fps - Chimbalix - RTX 3060M (80W) - i7-10875H (<75W) - NVIDIA 595.58.03 - MONSTER Tulpar T7 v20.3 (Turbo Mode)
+866 fps - Chimbalix (WINE) - RTX 3060M (80W) - i7-10875H (<75W) - NVIDIA 595.58.03 - MONSTER Tulpar T7 v20.3 (Turbo Mode)
+555 fps - Windows 10 - Radeon RX 9999 - Ryzen 99 99999X3D - Adrenalin 26.3.1 - PC-43823
+545 fps - Chimbalix - Radeon RX 9999 - Ryzen 99 99999X3D - Mesa 25.0.7 - PC-43823
+535 fps - Chimbalix (WINE) - Radeon RX 9999 - Ryzen 99 99999X3D - Mesa 25.0.7 - PC-43823
