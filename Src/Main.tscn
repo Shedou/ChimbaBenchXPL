@@ -641,7 +641,6 @@ flat = false
 
 [node name="BTN_About" type="Button" parent="GUI_DOWN"]
 
-hint/tooltip = "About the program and the authors."
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
@@ -659,7 +658,6 @@ flat = false
 
 [node name="BTN_Results" type="Button" parent="GUI_DOWN"]
 
-hint/tooltip = "About the program and the authors."
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
@@ -678,7 +676,6 @@ flat = false
 [node name="BTN_Scenes" type="Button" parent="GUI_DOWN"]
 
 rect/rotation = 0.01
-hint/tooltip = "Here you can load test scenes and change settings."
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -697,7 +694,6 @@ flat = false
 
 [node name="BTN_Save" type="Button" parent="GUI_DOWN"]
 
-hint/tooltip = "About the program and the authors."
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
@@ -715,7 +711,6 @@ flat = false
 
 [node name="BTN_Benchmark" type="Button" parent="GUI_DOWN"]
 
-hint/tooltip = "Start performance test!"
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
