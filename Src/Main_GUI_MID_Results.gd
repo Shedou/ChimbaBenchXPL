@@ -2,7 +2,7 @@ extends Control
 
 const btn_select_list = "/root/Main/GUI_MID/Results/Select_List"
 const btn_select_list_scene = "/root/Main/GUI_MID/Results/Select_List_Scene"
-var selected_scene = "SimpleTest"
+var selected_scene = "Simple"
 var selected_platform = "360pComplex"
 
 var FileWithResults = File.new()

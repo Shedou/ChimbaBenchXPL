@@ -1,16 +1,9 @@
-Shader Scene - 1280x720 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1Adrenalin 26.3.1Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
-Shader Scene - 1280x720 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
-Shader Scene - 1280x720 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
-Shader Scene - 1280x720 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
+Simple Test : 1280x720 : Complex (All Platforms)
+Fps . Reference . Limiter . GPU . Platform . Driver . CPU . Model
+======================================================================================
+999 . + . GPU . RTX 3060M (120W) . Windows 10 . NVIDIA 595.97 . i7-10875H (<75W) . MONSTER Tulpar T7 v20.3 (Turbo Mode)
+888 . + . GPU . RTX 3060M (80W) . Chimbalix 24.8 . NVIDIA 595.58.03 . i7-10875H (<75W) . MONSTER Tulpar T7 v20.3 (Turbo Mode)
+866 . + . GPU . RTX 3060M (80W) . Chimbalix 24.8 (WINE) . NVIDIA 595.58.03 . i7-10875H (<75W) . MONSTER Tulpar T7 v20.3 (Turbo Mode)
+555 . ? . GPU . Radeon RX 9999 . Windows 10 . Adrenalin 26.3.1 . Ryzen 99 99999X3D . PC-43823
+545 . ? . GPU . Radeon RX 9999 . Chimbalix 24.8 . Mesa 25.0.7 . Ryzen 99 99999X3D . PC-43823
+535 . ? . GPU . Radeon RX 9999 . Chimbalix 24.8 (WINE) . Mesa 25.0.7 . Ryzen 99 99999X3D . PC-43823
