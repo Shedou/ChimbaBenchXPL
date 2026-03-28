@@ -1,16 +1,5 @@
-Simple Scene - 640x360 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1Adrenalin 26.3.1Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
-Simple Scene - 640x360 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
-Simple Scene - 640x360 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
-Simple Scene - 640x360 - Complex
-555 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Windows 10 - Adrenalin 26.3.1
-545 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D-  Chimbalix - Mesa 25.0.7
-535 fps - PC-43823 - Radeon RX 9999 - Ryzen 99 99999X3D - Chimbalix (WINE) - Mesa 25.0.7
+Shader Test : 640x360 : WINE
+Fps . Reference . Limiter . GPU . Driver . CPU . OS . WINE
+======================================================================================
+888 . + . GPU . RTX 3060M (80W) . NVIDIA 595.58.03 . i7-10875H (<75W) . Chimbalix 24.8 . LG 10.12
+545 . ? . GPU . Radeon RX 9999 . Mesa 25.0.7 . Ryzen 99 99999X3D . Chimbalix 24.8 . LG 10.12
