@@ -1,3 +1,4 @@
+ChimbaBenchXPL - A3 | Last list update: 2026-04-02
 Shader Test : 1280x720 : Complex (All Platforms)
 Fps . Reference . Limiter . GPU . Platform . Driver . CPU . Model
 ======================================================================================

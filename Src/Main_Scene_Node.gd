@@ -31,7 +31,7 @@ func scene_delete_all():
 	
 	for child in node_children:
 		#remove_child(child)
-		child.nfree()
+		#child.nfree()
 		child.queue_free()
 		child = null
 	node_children = null
