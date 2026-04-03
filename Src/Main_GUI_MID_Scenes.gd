@@ -6,6 +6,11 @@ var selected_resolution = 1.0
 const btn_select_scene = "/root/Main/GUI_MID/Scenes/List/Select_Scene"
 const resolution_button = "/root/Main/GUI_MID/Scenes/Settings/Resolution_Button"
 
+const text_simple = "A simple scene with a single light source and minimal geometry and textures.\n\nSuitable for testing the performance of very low-end graphics cards.\n\nClick the \"Load...Scene\" button to load the test. Click \"Benchmark\" to run the benchmark."
+const text_shader = "A scene designed to stress the GPU shader cores."
+const text_texture = "This test fills the graphics card's memory with textures. This allows you to check the functionality of the video card memory.\n\nFor best results, please use specialized VRAM testing tools."
+const text_texture16384 = "This test checks whether the video card driver supports working with textures of size 16384x16384.\n\nFor best results, please use specialized VRAM testing tools."
+
 func _ready():
 	select_scene_fill()
 	settings_fill()
@@ -13,19 +18,19 @@ func _ready():
 
 func scene_description_update():
 	if selected_test == "Simple":
-		get_node("List/Description").set_text("A simple scene with a single light source and minimal geometry and textures.\n\nSuitable for testing the performance of very low-end graphics cards.\n\nClick the \"Load...Scene\" button to load the test. Click \"Benchmark\" to run the benchmark.")
+		get_node("List/Description").set_text(text_simple)
 	if selected_test == "Shader":
-		get_node("List/Description").set_text("A scene designed to stress the GPU shader cores.\n\nHowever, I have no experience developing shaders, so this test doesn't fully stress the GPU. If you have shader development experience, you can contribute to this open source project.")
+		get_node("List/Description").set_text(text_shader)
 	if selected_test == "Texture128":
-		get_node("List/Description").set_text("This test fills the graphics card's memory with textures. This allows you to check the functionality of the video card memory.\n\nThis test fills 104 MB (640x360) or 117 MB (1280x720) of the graphics card's memory.\n\nFor best results, please use specialized VRAM testing tools.")
+		get_node("List/Description").set_text(text_texture)
 	if selected_test == "Texture256":
-		get_node("List/Description").set_text("This test fills the graphics card's memory with textures. This allows you to check the functionality of the video card memory.\n\nThis test fills 190 MB (640x360) or 203 MB (1280x720) of the graphics card's memory.\n\nFor best results, please use specialized VRAM testing tools.")
+		get_node("List/Description").set_text(text_texture)
 	if selected_test == "Texture512":
-		get_node("List/Description").set_text("This test fills the graphics card's memory with textures. This allows you to check the functionality of the video card memory.\n\nThis test fills 424 MB (640x360) or 437 MB (1280x720) of the graphics card's memory.\n\nFor best results, please use specialized VRAM testing tools.")
+		get_node("List/Description").set_text(text_texture)
 	if selected_test == "Texture1024":
-		get_node("List/Description").set_text("This test fills the graphics card's memory with textures. This allows you to check the functionality of the video card memory.\n\nThis test fills 932 MB (640x360) or 945 MB (1280x720) of the graphics card's memory.\n\nFor best results, please use specialized VRAM testing tools.")
+		get_node("List/Description").set_text(text_texture)
 	if selected_test == "Texture2048":
-		get_node("List/Description").set_text("This test checks whether the video card driver supports working with textures of size 16384x16384.\n\nThis test fills 1398 MB (640x360) or 1411 MB (1280x720) of the graphics card's memory.\n\nFor best results, please use specialized VRAM testing tools.")
+		get_node("List/Description").set_text(text_texture16384)
 	
 	if selected_test == "Secret":
 		get_node("List/Description").set_text("This scene is not intended for testing.")
@@ -45,7 +50,7 @@ func select_scene_fill():
 	get_node(btn_select_scene).add_item("Texture Fill (256 MB)", 3)
 	get_node(btn_select_scene).add_item("Texture Fill (512 MB)", 4)
 	get_node(btn_select_scene).add_item("Texture Fill (1024 MB)", 5)
-	get_node(btn_select_scene).add_item("Texture Fill (16384x16384 ~1400 MB)", 6)
+	get_node(btn_select_scene).add_item("Texture Fill (16384x16384 ~1053 MB)", 6)
 	get_node(btn_select_scene).add_item("...", 7)
 
 func _on_Select_Scene_item_selected( ID ):

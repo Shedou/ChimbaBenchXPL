@@ -5,7 +5,7 @@ func _ready():
 	pass
 
 func multilayer():
-	var layers = 64
+	var layers = 16
 	var base_mat = get_material_override()
 	
 	if base_mat == null:

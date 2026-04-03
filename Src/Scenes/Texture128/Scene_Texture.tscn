@@ -9,11 +9,11 @@
 [ext_resource path="res://Scenes/ResTextures/2048.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/ResTextures/2048-1.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/ResTextures/2048-2.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/ResTextures/1024-1.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/ResTextures/2048-3.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/ResTextures/1024.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/ResTextures/512.png" type="Texture" id=12]
-[ext_resource path="res://Scenes/ResTextures/256.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/ResTextures/128.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/ResTextures/1024-1.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/ResTextures/512.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/ResTextures/256.png" type="Texture" id=14]
 
 [sub_resource type="FixedMaterial" id=1]
 
@@ -366,7 +366,7 @@ frame = 0
 region = false
 region_rect = Rect2( 0, 0, 0, 0 )
 
-[node name="512" type="Sprite3D" parent="."]
+[node name="1024-1" type="Sprite3D" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( -0.245595, 0, -0.0467255, -0.00741657, 0.246831, 0.0389823, 0.0461332, 0.0396816, -0.242481, 0.118949, 1.05801, 2.08873 )
@@ -404,7 +404,7 @@ frame = 0
 region = false
 region_rect = Rect2( 0, 0, 0, 0 )
 
-[node name="256" type="Sprite3D" parent="."]
+[node name="512" type="Sprite3D" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( -0.1776, 0, -0.175949, -0.0789009, 0.223455, 0.0796411, 0.157267, 0.112107, -0.158742, 0.40396, 1.05801, 0.275672 )
@@ -442,7 +442,7 @@ frame = 0
 region = false
 region_rect = Rect2( 0, 0, 0, 0 )
 
-[node name="128" type="Sprite3D" parent="."]
+[node name="256" type="Sprite3D" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( -0.236781, -0.0793018, -0.0120781, -0.070963, 0.189528, 0.146776, -0.0374018, 0.142444, -0.202017, -1.05625, 1.10693, 0.831306 )

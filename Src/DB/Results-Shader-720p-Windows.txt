@@ -2,4 +2,4 @@ ChimbaBenchXPL - A3 | Last list update: 2026-04-02
 Shader Test : 1280x720 : Windows
 Fps . Reference . Limiter . GPU . Driver . CPU . OS
 ======================================================================================
-129 . ~ . GPU . Radeon RX 470 . Adrenalin 21.5.2 . Athlon II x2 245e . Windows 7
+FPS . ~ . GPU . Radeon RX 470 . Adrenalin 21.5.2 . Athlon II x2 245e . Windows 7

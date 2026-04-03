@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scenes/Shader/Env_Alt.tres" type="Environment" id=1]
-[ext_resource path="res://Scenes/Shader/Scene_Shader_Alt.tres" type="Material" id=2]
-[ext_resource path="res://Scenes/ResOther/cube.msh" type="Mesh" id=3]
+[ext_resource path="res://Scenes/Shader/Shader_New.tres" type="Material" id=2]
+[ext_resource path="res://Scenes/Shader/Sphere.msh" type="Mesh" id=3]
 [ext_resource path="res://Scenes/Shader/Shader_Alt.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Shader/Shader_mat_second.tres" type="Material" id=5]
-[ext_resource path="res://Scenes/Shader/Shader_mat_first.tres" type="Material" id=6]
-[ext_resource path="res://Scenes/Shader/ShaderTes.tres" type="Material" id=7]
+[ext_resource path="res://Scenes/ResOther/cube.msh" type="Mesh" id=5]
 
 [sub_resource type="GDScript" id=1]
 
@@ -47,7 +45,7 @@ v_offset = 0.0
 [node name="TestCube-0" type="MeshInstance" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.0828577, -0.255488, -0.563164, 0.285219, 0.519942, -0.193915, 0.548705, -0.231688, 0.185839, 1.44778, 1.95985, -0.100695 )
+transform/local = Transform( -1.16039, 0.911322, -1.16821, 0.603683, 1.6459, 0.684327, 1.35306, 0.0472149, -1.30718, 1.81401, 2.54229, -1.42054 )
 layers = 1
 geometry/visible = true
 geometry/material_override = ExtResource( 2 )
@@ -67,13 +65,13 @@ mesh/skeleton = NodePath("..")
 material/0 = null
 script/script = ExtResource( 4 )
 
-[node name="TestCube-1" type="MeshInstance" parent="."]
+[node name="TestCube-6" type="MeshInstance" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.553455, -0.306047, 0, 0.276331, 0.499716, 0.271849, -0.131553, -0.237899, 0.571029, -0.565965, 1.93673, 2.11478 )
+transform/local = Transform( -1.16039, 0.911322, -1.16821, 0.603683, 1.6459, 0.684327, 1.35306, 0.0472149, -1.30718, 4.39135, 3.00555, 2.33692 )
 layers = 1
 geometry/visible = true
-geometry/material_override = ExtResource( 5 )
+geometry/material_override = ExtResource( 2 )
 geometry/cast_shadow = 1
 geometry/receive_shadows = true
 geometry/range_begin = 0.0
@@ -90,13 +88,105 @@ mesh/skeleton = NodePath("..")
 material/0 = null
 script/script = ExtResource( 4 )
 
-[node name="TestCube-2" type="MeshInstance" parent="."]
+[node name="TestCube-9" type="MeshInstance" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.36178, -0.200055, 0, 0.180631, 0.326652, 0.177701, -0.0859927, -0.155509, 0.373268, 0.105435, 1.09415, 0.822786 )
+transform/local = Transform( -1.16039, 0.911322, -1.16821, 0.603683, 1.6459, 0.684327, 1.35306, 0.0472149, -1.30718, 0.936494, 0.718538, 1.6212 )
 layers = 1
 geometry/visible = true
-geometry/material_override = ExtResource( 6 )
+geometry/material_override = ExtResource( 2 )
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 3 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+script/script = ExtResource( 4 )
+
+[node name="TestCube-10" type="MeshInstance" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -1.16039, 0.911322, -1.16821, 0.603683, 1.6459, 0.684327, 1.35306, 0.0472149, -1.30718, -0.616822, 1.77723, 5.34356 )
+layers = 1
+geometry/visible = true
+geometry/material_override = ExtResource( 2 )
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 3 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+script/script = ExtResource( 4 )
+
+[node name="TestCube-11" type="MeshInstance" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -1.16039, 0.911322, -1.16821, 0.603683, 1.6459, 0.684327, 1.35306, 0.0472149, -1.30718, 1.97398, 4.33338, 7.04473 )
+layers = 1
+geometry/visible = true
+geometry/material_override = ExtResource( 2 )
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 3 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+script/script = ExtResource( 4 )
+
+[node name="TestCube-7" type="MeshInstance" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -1.64312, 1.29044, -1.65419, 0.854819, 2.33061, 0.969011, 1.91595, 0.0668566, -1.85097, 7.78056, 5.93032, 8.02044 )
+layers = 1
+geometry/visible = true
+geometry/material_override = ExtResource( 2 )
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 3 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+script/script = ExtResource( 4 )
+
+[node name="TestCube-12" type="MeshInstance" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -1.64312, 1.29044, -1.65419, 0.854819, 2.33061, 0.969011, 1.91595, 0.0668566, -1.85097, 6.65674, 3.15027, 6.22364 )
+layers = 1
+geometry/visible = true
+geometry/material_override = ExtResource( 2 )
 geometry/cast_shadow = 1
 geometry/receive_shadows = true
 geometry/range_begin = 0.0
@@ -116,10 +206,10 @@ script/script = ExtResource( 4 )
 [node name="TestCube-3" type="MeshInstance" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.27398, -0.151504, 0, 0.136794, 0.247378, 0.134575, -0.0651234, -0.117769, 0.28268, 0.0127133, 2.35645, 0.752969 )
+transform/local = Transform( -0.0825359, -0.517144, -0.357709, 0.532352, 0.134543, -0.31734, 0.334655, -0.341565, 0.416586, 1.95994, 2.39061, 3.72474 )
 layers = 1
 geometry/visible = true
-geometry/material_override = ExtResource( 7 )
+geometry/material_override = ExtResource( 2 )
 geometry/cast_shadow = 1
 geometry/receive_shadows = true
 geometry/range_begin = 0.0
@@ -131,7 +221,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 3 )
+mesh/mesh = ExtResource( 5 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 script/script = ExtResource( 4 )

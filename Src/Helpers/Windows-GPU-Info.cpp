@@ -8,9 +8,14 @@ int main() {
     dd.cb = sizeof(dd);
     int deviceIndex = 0;
 
-    if (EnumDisplayDevices(NULL, deviceIndex, &dd, 0)) {
-        std::wcout << dd.DeviceString << std::endl;
-    } else {
+    while (EnumDisplayDevices(NULL, deviceIndex, &dd, 0)) {
+        if (dd.StateFlags & DISPLAY_DEVICE_ATTACHED_TO_DESKTOP) {
+            std::wcout << deviceIndex << L": " << dd.DeviceString << std::endl;
+        }
+        deviceIndex++;
+    }
+
+    if (deviceIndex == 0) {
         std::cerr << "Failed to get display device info." << std::endl;
     }
 

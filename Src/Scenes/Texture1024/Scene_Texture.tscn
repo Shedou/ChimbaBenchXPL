@@ -9,11 +9,11 @@
 [ext_resource path="res://Scenes/ResTextures/8192.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/ResTextures/8192-1.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/ResTextures/4096.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/ResTextures/2048-2.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/ResTextures/4096-1.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/ResTextures/4096-2.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/ResTextures/1024.png" type="Texture" id=12]
-[ext_resource path="res://Scenes/ResTextures/2048.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/ResTextures/512.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/ResTextures/4096-3.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/ResTextures/4096-4.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/ResTextures/4096-5.png" type="Texture" id=14]
 [ext_resource path="res://Scenes/ResTextures/256.png" type="Texture" id=15]
 [ext_resource path="res://Scenes/ResTextures/128.png" type="Texture" id=16]
 
@@ -371,7 +371,7 @@ region_rect = Rect2( 0, 0, 0, 0 )
 [node name="1024" type="Sprite3D" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -0.0421177, 0, -0.246427, 0, 0.25, 0, 0.246427, 0, -0.0421177, 3.21491, 0.798628, 0.758584 )
+transform/local = Transform( -0.0101082, -8.8369e-10, -0.0591424, -7.49736e-11, 0.06, -8.8369e-10, 0.0591424, -7.49736e-11, -0.0101082, 3.21491, 0.798628, 0.758584 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -409,7 +409,7 @@ region_rect = Rect2( 0, 0, 0, 0 )
 [node name="1025" type="Sprite3D" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -0.0630175, -0.000764105, -0.10795, -0.000137496, 0.124997, -0.000804506, 0.107953, -0.000286842, -0.063017, 3.3572, 0.798628, 2.91051 )
+transform/local = Transform( -0.0302483, -0.00036677, -0.0518161, -6.59975e-05, 0.0599987, -0.000386162, 0.0518173, -0.000137684, -0.0302481, 3.3572, 0.798628, 2.91051 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -447,7 +447,7 @@ region_rect = Rect2( 0, 0, 0, 0 )
 [node name="512" type="Sprite3D" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -0.245595, 0, -0.0467255, -0.00741657, 0.246831, 0.0389823, 0.0461332, 0.0396816, -0.242481, -1.28353, 1.05801, 1.82555 )
+transform/local = Transform( -0.0245595, 2.14706e-09, -0.00467255, -0.000741654, 0.0246831, 0.00389823, 0.00461331, 0.00396816, -0.0242481, -1.28353, 1.05801, 1.82555 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null

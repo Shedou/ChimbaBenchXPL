@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=19 format=1]
 
 [ext_resource path="res://Scenes/Texture256/Texture.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/ResOther/Env.tres" type="Environment" id=2]
@@ -7,14 +7,15 @@
 [ext_resource path="res://Scenes/ResOther/Terrain/Light.msh" type="Mesh" id=5]
 [ext_resource path="res://Scenes/ResOther/Terrain/Light.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/ResTextures/4096.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/ResTextures/2048-3.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/ResTextures/4096-1.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/ResTextures/2048-1.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/ResTextures/2048.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/ResTextures/1024.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/ResTextures/1024-1.png" type="Texture" id=12]
-[ext_resource path="res://Scenes/ResTextures/512.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/ResTextures/256.png" type="Texture" id=14]
-[ext_resource path="res://Scenes/ResTextures/128.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/ResTextures/2048-2.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/ResTextures/2048-4.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/ResTextures/2048-3.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/ResTextures/512.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/ResTextures/256.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/ResTextures/128.png" type="Texture" id=16]
 
 [sub_resource type="FixedMaterial" id=1]
 
@@ -256,7 +257,7 @@ region_rect = Rect2( 0, 0, 0, 0 )
 [node name="2048-1" type="Sprite3D" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -0.136143, 0, -0.209678, 0, 0.25, 0, 0.209678, 0, -0.136143, 4.60008, 2.44897, 2.82307 )
+transform/local = Transform( -0.136143, -1.1902e-08, -0.209678, -3.52502e-09, 0.25, -1.1902e-08, 0.209678, -3.52503e-09, -0.136143, 4.60008, 2.44897, 2.82307 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -332,7 +333,7 @@ region_rect = Rect2( 0, 0, 0, 0 )
 [node name="1024" type="Sprite3D" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -0.0421177, 0, -0.246427, 0, 0.25, 0, 0.246427, 0, -0.0421177, 3.21491, 0.798628, 0.758584 )
+transform/local = Transform( -0.0210588, -1.84102e-09, -0.123213, -1.56195e-10, 0.125, -1.84102e-09, 0.123213, -1.56195e-10, -0.0210588, 3.21491, 0.798628, 0.758584 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -367,10 +368,10 @@ frame = 0
 region = false
 region_rect = Rect2( 0, 0, 0, 0 )
 
-[node name="1024-1" type="Sprite3D" parent="."]
+[node name="1025" type="Sprite3D" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -0.158373, 0, -0.193438, 0, 0.25, 0, 0.193438, 0, -0.158373, 1.93518, 0.798628, 4.42844 )
+transform/local = Transform( 0.0425, -1.67824e-09, -0.117553, -1.56195e-10, 0.125, -1.84102e-09, 0.117553, 7.72837e-10, 0.0425, 3.21491, 0.798628, -1.62517 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -399,6 +400,44 @@ flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
 texture = ExtResource( 12 )
+vframes = 1
+hframes = 1
+frame = 0
+region = false
+region_rect = Rect2( 0, 0, 0, 0 )
+
+[node name="1024-1" type="Sprite3D" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -0.0791863, -6.92269e-09, -0.0967188, -2.47242e-09, 0.125, -6.92269e-09, 0.0967188, -2.47242e-09, -0.0791863, 1.92351, 0.798628, 4.44328 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+centered = true
+offset = Vector2( 0, 0 )
+flip_h = false
+flip_v = false
+modulate = Color( 1, 1, 1, 1 )
+opacity = 1.0
+pixel_size = 0.01
+axis = 2
+flags/transparent = false
+flags/shaded = true
+flags/double_sided = true
+flags/on_top = false
+flags/alpha_cut = 0
+texture = ExtResource( 13 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -436,7 +475,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -474,7 +513,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -512,7 +551,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 vframes = 1
 hframes = 1
 frame = 0
