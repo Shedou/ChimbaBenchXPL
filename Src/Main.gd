@@ -21,6 +21,7 @@ var main_cpu_name = ["undefined"]
 var main_cpu_name_str = ""
 var main_gpu_name = ["undefined"]
 var main_gpu_name_str = ""
+var main_gpu_name_all_str = ""
 var main_exe_dir = OS.get_executable_path().get_base_dir();
 
 var reference_texture = null
@@ -87,6 +88,9 @@ func get_hw_info():
 	
 	main_cpu_name_str = str(main_cpu_name[0])
 	main_gpu_name_str = str(main_gpu_name[0])
+	
+	#for item in range(main_gpu_name.size()):
+	#	main_gpu_name_all_str = str(main_gpu_name[item])
 	
 	var wine_detect_regex = RegEx.new()
 	wine_detect_regex.compile("WINE")
@@ -210,6 +214,7 @@ func result_save():
 		result_file.store_string(" ("+tYear+"-"+tMonth+"-"+tDay+" - "+tHour+":"+tMin+":"+tSec+")\n")
 		result_file.store_string("CPU: "+main_cpu_name_str.replace("\n", "")+"\n")
 		result_file.store_string("GPU: "+main_gpu_name_str.replace("\n", "")+"\n")
+		#result_file.store_string("GPUs List: "+main_gpu_name_all_str.replace("\n", " : ")+"\n")
 		result_file.store_string("Resolution: "+main_rd_sizes+"\n")
 		result_file.store_string("Result (fps - Scene): "+str(bench_result)+" - "+loaded_scene)
 		result_file.store_string("\n")

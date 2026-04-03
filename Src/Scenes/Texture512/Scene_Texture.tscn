@@ -1,19 +1,18 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=16 format=1]
 
-[ext_resource path="res://Scenes/Texture512/Texture.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/ResOther/Env.tres" type="Environment" id=2]
-[ext_resource path="res://Scenes/ResOther/Terrain/Terrain.msh" type="Mesh" id=3]
-[ext_resource path="res://Scenes/ResOther/Terrain/Terrain_Texture.jpg" type="Texture" id=4]
-[ext_resource path="res://Scenes/ResOther/Terrain/Light.msh" type="Mesh" id=5]
-[ext_resource path="res://Scenes/ResOther/Terrain/Light.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/ResTextures/4096.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/ResTextures/8192.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/ResTextures/4096-1.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/ResTextures/4096-2.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/ResTextures/1024.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/ResTextures/512.png" type="Texture" id=12]
-[ext_resource path="res://Scenes/ResTextures/256.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/ResTextures/128.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/ResOther/Env.tres" type="Environment" id=1]
+[ext_resource path="res://Scenes/ResOther/Terrain/Terrain.msh" type="Mesh" id=2]
+[ext_resource path="res://Scenes/ResOther/Terrain/Terrain_Texture.jpg" type="Texture" id=3]
+[ext_resource path="res://Scenes/ResOther/Terrain/Light.msh" type="Mesh" id=4]
+[ext_resource path="res://Scenes/ResOther/Terrain/Light.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/ResTextures/4096.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/ResTextures/8192.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/ResTextures/4096-1.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/ResTextures/4096-2.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/ResTextures/1024.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/ResTextures/512.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/ResTextures/256.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/ResTextures/128.png" type="Texture" id=13]
 
 [sub_resource type="FixedMaterial" id=1]
 
@@ -43,7 +42,7 @@ params/shader_param = 0.5
 params/glow = 0.0
 params/point_size = 1.0
 uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-textures/diffuse = ExtResource( 4 )
+textures/diffuse = ExtResource( 3 )
 textures/diffuse_tc = 0
 textures/detail_tc = 0
 textures/specular_tc = 0
@@ -81,7 +80,7 @@ params/shader_param = 0.5
 params/glow = 0
 params/point_size = 1.0
 uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-textures/diffuse = ExtResource( 6 )
+textures/diffuse = ExtResource( 5 )
 textures/diffuse_tc = 0
 textures/detail_tc = 0
 textures/specular_tc = 0
@@ -94,7 +93,6 @@ textures/shade_param_tc = 0
 [node name="Texture_Scene" type="Spatial"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-script/script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 
@@ -107,7 +105,7 @@ far = 100.0
 keep_aspect = 1
 current = false
 visible_layers = 1048575
-environment = ExtResource( 2 )
+environment = ExtResource( 1 )
 h_offset = 0.0
 v_offset = 0.0
 
@@ -128,7 +126,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 3 )
+mesh/mesh = ExtResource( 2 )
 mesh/skeleton = NodePath("..")
 material/0 = SubResource( 1 )
 
@@ -150,7 +148,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 5 )
+mesh/mesh = ExtResource( 4 )
 mesh/skeleton = NodePath("..")
 material/0 = SubResource( 2 )
 
@@ -207,7 +205,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -245,7 +243,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -283,7 +281,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -321,7 +319,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -359,7 +357,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -397,7 +395,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -435,7 +433,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 13 )
+texture = ExtResource( 12 )
 vframes = 1
 hframes = 1
 frame = 0
@@ -473,7 +471,7 @@ flags/shaded = true
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 14 )
+texture = ExtResource( 13 )
 vframes = 1
 hframes = 1
 frame = 0
