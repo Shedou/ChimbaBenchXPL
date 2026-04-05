@@ -90,7 +90,7 @@ func get_hw_info():
 		OS.execute("bash", ["-c", "cat /proc/cpuinfo | grep 'model name' | head -n1 | cut -d: -f2 | sed 's/^[ \t]*//'"], true, main_cpu_name)
 		OS.execute("bash", ["-c", "lspci | grep -iE 'vga|3d|display' | cut -d':' -f3 | sed 's/^ //'"], true, main_gpu_name)
 		if main_gpu_name[0] == "":
-			OS.execute("bash", ["-c", "lspci | grep -iE 'vga|3d|display' | cut -d':' -f3 | sed 's/^ //'"], true, main_gpu_name)
+			OS.execute("bash", ["-c", "cat /sys/class/drm/card*/device/uevent | grep PCI_ID | cut -d'=' -f2"], true, main_gpu_name)
 	
 	main_current_os_kernel_str = str(main_current_os_kernel[0])
 	main_cpu_name_str = str(main_cpu_name[0])
