@@ -1,10 +1,20 @@
 ChimbaBenchXPL - A3 | Last list update: 2026-04-02
 Shader Test : 1280x720 : Complex (All Platforms)
-Fps . Reference . Limiter . GPU . Platform . Driver . CPU . Model
+Fps . Reference . Limiter . OS . Driver
 ======================================================================================
-example . + . GPU . RTX 3060M (120W) . Windows 10 . NVIDIA 595.97 . i7-10875H (<75W) . MONSTER Tulpar T7 v20.3 (Turbo Mode)
-example . + . GPU . RTX 3060M (80W) . Chimbalix 24.8 . NVIDIA 595.58.03 . i7-10875H (<75W) . MONSTER Tulpar T7 v20.3 (Turbo Mode)
-example . + . GPU . RTX 3060M (80W) . Chimbalix 24.8 (WINE) . NVIDIA 595.58.03 . i7-10875H (<75W) . MONSTER Tulpar T7 v20.3 (Turbo Mode)
-example . ? . GPU . Radeon RX 9999 . Windows 10 . Adrenalin 26.3.1 . Ryzen 99 99999X3D . PC-43823
-example . ? . GPU . Radeon RX 9999 . Chimbalix 24.8 . Mesa 25.0.7 . Ryzen 99 99999X3D . PC-43823
-example . ? . GPU . Radeon RX 9999 . Chimbalix 24.8 (WINE) . Mesa 25.0.7 . Ryzen 99 99999X3D . PC-43823
+ Chi-PC-A780L-01 - GTX 750 - Athlon x2 7550
+126 . + . GPU . Windows XP SP3  . NVIDIA 340.52
+126 . + . GPU . Windows 7 SP1   . NVIDIA 340.52
+15  . + . GPU . Chimbalix 24.8  . Linux 6.8  . Mesa 25.0.7
+15  . + . GPU . Fedora Linux 43 . Linux 6.17 . Mesa 25.2.4
+15  . + . GPU . Linux Mint 22.2 . Linux 6.14 . Mesa 25.0.7
+16  . + . GPU . Nobara Linux 43 . Linux 6.18 . Mesa 25.3.2
+15  . + . GPU . Garuda Linux    . Linux 6.17 . Mesa 25.2.6
+
+ Chi-PC-A780L-01 - Radeon 3100 - Athlon x2 7550
+2  . + . GPU . Windows 7 SP1   . AMD Catalyst 13.4
+<1 . + . GPU . Chimbalix 24.8  . Linux 6.8  . Mesa 25.0.7
+<1 . + . GPU . Fedora Linux 43 . Linux 6.17 . Mesa 25.2.4
+<1 . + . GPU . Linux Mint 22.2 . Linux 6.14 . Mesa 25.0.7
+<1 . + . GPU . Nobara Linux 43 . Linux 6.18 . Mesa 25.3.2
+<1 . + . GPU . Garuda Linux    . Linux 6.17 . Mesa 25.2.6
