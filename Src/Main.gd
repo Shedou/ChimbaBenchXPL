@@ -16,12 +16,14 @@ var main_cmd_execute = OS.get_executable_path()
 var main_execute_path = main_cmd_execute.get_base_dir()
 var main_current_os = OS.get_name()
 var main_current_os_name = "undefined"
+var main_current_os_name_arr = [""]
 var main_current_os_kernel = ["undefined"]
 var main_cpu_name = ["undefined"]
 var main_cpu_name_str = ""
 var main_gpu_name = ["undefined"]
 var main_gpu_name_str = ""
 var main_gpu_name_all_str = ""
+var main_current_os_kernel_str = ""
 var main_exe_dir = OS.get_executable_path().get_base_dir();
 
 var reference_texture = null
@@ -43,7 +45,7 @@ var process_count = 0.0; var process_fixed_count = 0.0;
 var process_fps = 0.0; var process_fixed_fps = 0.0
 var process_timer = 0.0; var process_fixed_timer = 0.0
 
-const bench_period = 40 # 40 = 20 seconds if benchmark() run in timer_half mode...
+const bench_period = 30 # 40 = 20 seconds if benchmark() run in timer_half mode...
 const bench_warm_time = 16
 
 var bench_start = 0; var bench_warm = 0
@@ -75,17 +77,22 @@ func get_hw_info():
 	main_gpu_name[0] = "not detected"
 	if main_current_os == "Windows":
 		main_current_os_name = "Windows"
+		OS.execute("cmd", ["/c", "ver"], true, main_current_os_kernel)
 		OS.execute(main_exe_dir+"\\Helpers\\Wine-Detect.bat", [""], true, wine_detect)
 		OS.execute(main_exe_dir+"\\Helpers\\Windows-CPU-Info.bat", [""], true, main_cpu_name)
 		OS.execute(main_exe_dir+"\\Helpers\\Windows-GPU-Info.exe", [""], true, main_gpu_name)
 	elif main_current_os == "X11":
 		OS.execute("uname", ["-r"], true, main_current_os_kernel)
 		main_current_os_name = "Linux"
+		OS.execute(main_exe_dir+"/Helpers/Linux-OS-Name.sh", [""], true, main_current_os_name_arr)
+		if main_current_os_name_arr[0] != "":
+			main_current_os_name = str(main_current_os_name_arr[0]).replace("\n", "")
 		OS.execute("bash", ["-c", "cat /proc/cpuinfo | grep 'model name' | head -n1 | cut -d: -f2 | sed 's/^[ \t]*//'"], true, main_cpu_name)
-		OS.execute("bash", ["-c", "cat /sys/class/drm/card*/device/uevent | grep PCI_ID | cut -d'=' -f2"], true, main_gpu_name)
+		OS.execute("bash", ["-c", "lspci | grep -iE 'vga|3d|display' | cut -d':' -f3 | sed 's/^ //'"], true, main_gpu_name)
 		if main_gpu_name[0] == "":
 			OS.execute("bash", ["-c", "lspci | grep -iE 'vga|3d|display' | cut -d':' -f3 | sed 's/^ //'"], true, main_gpu_name)
 	
+	main_current_os_kernel_str = str(main_current_os_kernel[0])
 	main_cpu_name_str = str(main_cpu_name[0])
 	main_gpu_name_str = str(main_gpu_name[0])
 	
@@ -170,7 +177,7 @@ func benchmark():
 					bench_strange_flag = ".!. "
 			
 			benchmark_reset(bench_result)
-			
+			result_save()
 			get_node("GUI_DOWN/BTN_Benchmark").set_pressed(false)
 			get_node("GUI_DOWN").menu_unblock()
 
@@ -210,13 +217,13 @@ func result_save():
 	if result_file_code == OK:
 		result_file.seek_end()
 		result_file.store_string("\n")
-		result_file.store_string(project_name+" "+project_version+" ("+main_current_os_name+")")
-		result_file.store_string(" ("+tYear+"-"+tMonth+"-"+tDay+" - "+tHour+":"+tMin+":"+tSec+")\n")
+		result_file.store_string(" "+tYear+"-"+tMonth+"-"+tDay+" - "+tHour+":"+tMin+":"+tSec)
+		result_file.store_string(" - "+project_name+" "+project_version+" - "+main_current_os_name)
+		result_file.store_string(" - "+main_current_os_kernel_str.replace("\n", "")+"\n")
 		result_file.store_string("CPU: "+main_cpu_name_str.replace("\n", "")+"\n")
 		result_file.store_string("GPU: "+main_gpu_name_str.replace("\n", "")+"\n")
 		#result_file.store_string("GPUs List: "+main_gpu_name_all_str.replace("\n", " : ")+"\n")
-		result_file.store_string("Resolution: "+main_rd_sizes+"\n")
-		result_file.store_string("Result (fps - Scene): "+str(bench_result)+" - "+loaded_scene)
+		result_file.store_string("Result: "+str(bench_result)+" - "+loaded_scene+" - "+str(main_render_size.x)+"x"+str(main_render_size.y))
 		result_file.store_string("\n")
 		result_file.close()
 	else:
