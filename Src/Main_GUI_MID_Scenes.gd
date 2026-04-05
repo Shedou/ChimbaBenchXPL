@@ -6,7 +6,7 @@ var selected_resolution = 1.0
 const btn_select_scene = "/root/Main/GUI_MID/Scenes/List/Select_Scene"
 const resolution_button = "/root/Main/GUI_MID/Scenes/Settings/Resolution_Button"
 
-const text_simple = "A simple scene with a single light source and minimal geometry and textures.\n\nSuitable for testing the performance of very low-end graphics cards.\n\nClick the \"Load...Scene\" button to load the test. Click \"Benchmark\" to run the benchmark."
+const text_simple = "A simple scene with a single light source and minimal geometry and textures.\n\nClick the \"Load...Scene\" button to load the test. Click \"Benchmark\" to run the benchmark.\n\nThe results are automatically saved in the \"Benchmark-Result.txt\" file next to the program."
 const text_shader = "A scene designed to stress the GPU shader cores."
 const text_texture = "This test fills the graphics card's memory with textures. This allows you to check the functionality of the video card memory.\n\nFor best results, please use specialized VRAM testing tools."
 const text_texture16384 = "This test checks whether the video card driver supports working with textures of size 16384x16384.\n\nFor best results, please use specialized VRAM testing tools."
@@ -73,3 +73,7 @@ func _on_Scene_Load_pressed():
 	get_node("/root/Main").reference_set(str(selected_test))
 	get_node("/root/Main").benchmark_reset("Scene Changed...")
 	get_node("/root/Main").loaded_scene = str(selected_test)
+
+
+func _on_Batch_pressed():
+	get_node("/root/Main").benchmark_start_batch()

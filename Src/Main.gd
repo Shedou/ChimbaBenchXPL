@@ -23,6 +23,8 @@ var main_cpu_name_str = ""
 var main_gpu_name = ["undefined"]
 var main_gpu_name_str = ""
 var main_gpu_name_all_str = ""
+var main_gpu_driver_name = [""]
+var main_gpu_driver_name_str = ""
 var main_current_os_kernel_str = ""
 var main_exe_dir = OS.get_executable_path().get_base_dir();
 
@@ -48,6 +50,8 @@ var process_timer = 0.0; var process_fixed_timer = 0.0
 const bench_period = 30 # 40 = 20 seconds if benchmark() run in timer_half mode...
 const bench_warm_time = 16
 
+var bench_start_batch_counter = 0
+var bench_start_batch = 0
 var bench_start = 0; var bench_warm = 0
 var bench = 0.0; var bench_count = 0; var bench_result = 0
 var bench_fps_start = 0; var bench_fps_start_collected = 0
@@ -78,12 +82,14 @@ func get_hw_info():
 	if main_current_os == "Windows":
 		main_current_os_name = "Windows"
 		OS.execute("cmd", ["/c", "ver"], true, main_current_os_kernel)
+		#OS.execute("cmd", ["/c", "reg query HKLM\\HARDWARE\\DEVICEMAP\\VIDEO /v \\Device\\Video0"], true, main_gpu_driver_name)
 		OS.execute(main_exe_dir+"\\Helpers\\Wine-Detect.bat", [""], true, wine_detect)
 		OS.execute(main_exe_dir+"\\Helpers\\Windows-CPU-Info.bat", [""], true, main_cpu_name)
 		OS.execute(main_exe_dir+"\\Helpers\\Windows-GPU-Info.exe", [""], true, main_gpu_name)
 	elif main_current_os == "X11":
 		OS.execute("uname", ["-r"], true, main_current_os_kernel)
 		main_current_os_name = "Linux"
+		OS.execute("bash", ["-c", "lspci -k | grep -A 3 -E '(VGA|3D)' | grep 'in use' | cut -d ':' -f2 | tr -d ' '"], true, main_gpu_driver_name)
 		OS.execute(main_exe_dir+"/Helpers/Linux-OS-Name.sh", [""], true, main_current_os_name_arr)
 		if main_current_os_name_arr[0] != "":
 			main_current_os_name = str(main_current_os_name_arr[0]).replace("\n", "")
@@ -95,6 +101,7 @@ func get_hw_info():
 	main_current_os_kernel_str = str(main_current_os_kernel[0])
 	main_cpu_name_str = str(main_cpu_name[0])
 	main_gpu_name_str = str(main_gpu_name[0])
+	main_gpu_driver_name_str = str(main_gpu_driver_name[0])
 	
 	#for item in range(main_gpu_name.size()):
 	#	main_gpu_name_all_str = str(main_gpu_name[item])
@@ -121,8 +128,34 @@ func _fixed_process(delta): fps_monitor_fixed_process(delta)
 	timer_half_count += delta
 	if timer_half_count >= timer_half: timer_half_count = 0.0
 		adaptive_fps()
-		if bench_start == 1:
-			benchmark()
+		if bench_start == 1 && bench_start_batch == 0: benchmark()
+		if bench_start_batch == 1:
+			if bench_start == 3:
+				if bench_start_batch_counter <= 3:
+					if bench_start_batch_counter == 0:
+						get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(0)
+						get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(0)
+						bench_start = 2
+					elif bench_start_batch_counter == 1:
+						get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(1)
+						get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(0)
+						bench_start = 2
+					elif bench_start_batch_counter == 2:
+						get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(1)
+						get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(1)
+						bench_start = 2
+					elif bench_start_batch_counter == 3:
+						get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(0)
+						get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(1)
+						bench_start = 2
+					bench_start_batch_counter += 1
+					get_node("GUI_MID/Scenes")._on_Settings_Apply_pressed()
+					get_node("GUI_MID/Scenes")._on_Scene_Load_pressed()
+				else: benchmark_batch_reset("stop_batch")
+			
+			if bench_start_batch == 1:
+				benchmark()
+		
 		update_gui_up()
 
 func update_gui_up():
@@ -176,29 +209,71 @@ func benchmark():
 				if (bench_fps_start+20.0) < bench_result || (bench_fps_start-20.0) > bench_result:
 					bench_strange_flag = ".!. "
 			
-			benchmark_reset(bench_result)
+			if bench_start_batch == 1:
+				benchmark_batch_reset(bench_result)
+				bench_start = 3
+			else:
+				benchmark_reset(bench_result)
+			
 			result_save()
-			get_node("GUI_DOWN/BTN_Benchmark").set_pressed(false)
-			get_node("GUI_DOWN").menu_unblock()
+			#get_node("GUI_DOWN/BTN_Benchmark").set_pressed(false)
+			#get_node("GUI_DOWN").menu_unblock()
 
 func benchmark_start():
+	if bench_start_batch == 1:
+		benchmark_batch_reset("stop_batch")
+	else:
+		if bench_start == 0:
+			benchmark_reset("Bench start...")
+			bench_start = 1
+			process_target_fps = process_target_fps_max
+			OS.set_target_fps(process_target_fps)
+			get_node("GUI_DOWN").menu_block()
+			get_node("GUI_DOWN").menu_close()
+		else:
+			benchmark_reset("Aborted...")
+			get_node("GUI_DOWN").menu_unblock()
+
+func benchmark_start_batch():
 	if bench_start == 0:
-		benchmark_reset("Bench start...")
-		bench_start = 1
+		benchmark_batch_reset("Batch start...")
+		bench_start = 3
+		bench_start_batch = 1
+		bench_start_batch_counter = 0
 		process_target_fps = process_target_fps_max
 		OS.set_target_fps(process_target_fps)
 		get_node("GUI_DOWN").menu_block()
 		get_node("GUI_DOWN").menu_close()
+		get_node("GUI_DOWN/BTN_Benchmark").set_pressed(true)
 	else:
-		benchmark_reset("Aborted...")
+		benchmark_batch_reset("Batch aborted...")
 		get_node("GUI_DOWN").menu_unblock()
 
 func benchmark_reset(reason):
+	if bench_start_batch == 1:
+		benchmark_batch_reset(reason)
+	else:
+		bench_start_batch = 0
+		bench_start_batch_counter = 0
+		bench_result = reason
+		bench_start = 0; bench = 0.0; bench_count = 0; bench_warm = 0
+		bench_fps_start = 0; bench_fps_start_collected = 0
+		if str(reason) == "Aborted..." || str(reason) == "New settings..." || str(reason) == "Bench start...":
+			bench_strange_flag = ""
+		get_node("GUI_DOWN/BTN_Benchmark").set_pressed(false)
+		get_node("GUI_DOWN").menu_unblock()
+
+func benchmark_batch_reset(reason):
+	if str(reason) == "Aborted..." || str(reason) == "stop_batch":
+		bench_strange_flag = ""
+		bench_start_batch = 0
+		bench_start_batch_counter = 0
+		get_node("GUI_DOWN/BTN_Benchmark").set_pressed(false)
+		get_node("GUI_DOWN").menu_unblock()
+	
 	bench_result = reason
 	bench_start = 0; bench = 0.0; bench_count = 0; bench_warm = 0
 	bench_fps_start = 0; bench_fps_start_collected = 0
-	if str(reason) == "Aborted..." || str(reason) == "New settings..." || str(reason) == "Bench start...":
-		bench_strange_flag = ""
 
 func result_save():
 	var tdate = OS.get_date().values()
@@ -221,7 +296,7 @@ func result_save():
 		result_file.store_string(" - "+project_name+" "+project_version+" - "+main_current_os_name)
 		result_file.store_string(" - "+main_current_os_kernel_str.replace("\n", "")+"\n")
 		result_file.store_string("CPU: "+main_cpu_name_str.replace("\n", "")+"\n")
-		result_file.store_string("GPU: "+main_gpu_name_str.replace("\n", "")+"\n")
+		result_file.store_string("GPU: "+main_gpu_name_str.replace("\n", "")+" - ("+main_gpu_driver_name_str.replace("\n", "")+")\n")
 		#result_file.store_string("GPUs List: "+main_gpu_name_all_str.replace("\n", " : ")+"\n")
 		result_file.store_string("Result: "+str(bench_result)+" - "+loaded_scene+" - "+str(main_render_size.x)+"x"+str(main_render_size.y))
 		result_file.store_string("\n")

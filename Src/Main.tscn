@@ -216,6 +216,23 @@ shortcut = null
 text = "Load Selected Scene"
 flat = false
 
+[node name="Batch" type="Button" parent="GUI_MID/Scenes/List"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 3 )
+margin/left = 10.0
+margin/top = 244.0
+margin/right = 70.0
+margin/bottom = 266.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Batch"
+flat = false
+
 [node name="About" type="Control" parent="GUI_MID"]
 
 editor/display_folded = true
@@ -754,6 +771,8 @@ flat = false
 [connection signal="item_selected" from="GUI_MID/Scenes/List/Select_Scene" to="GUI_MID/Scenes" method="_on_Select_Scene_item_selected"]
 
 [connection signal="pressed" from="GUI_MID/Scenes/List/Scene_Load" to="GUI_MID/Scenes" method="_on_Scene_Load_pressed"]
+
+[connection signal="pressed" from="GUI_MID/Scenes/List/Batch" to="GUI_MID/Scenes" method="_on_Batch_pressed"]
 
 [connection signal="pressed" from="GUI_MID/About/Project_URL" to="GUI_MID/About" method="_on_Project_URL_pressed"]
 
