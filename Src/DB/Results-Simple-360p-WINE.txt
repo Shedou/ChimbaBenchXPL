@@ -1,6 +1,0 @@
-ChimbaBenchXPL - A3 | Last list update: 2026-04-02
-Simple Test : 640x360 : WINE
-Fps . Reference . Limiter . GPU . Driver . CPU . Linux Kernel . OS . WINE Version
-======================================================================================
-example . + . GPU . RTX 3060M (80W) . NVIDIA 595.58.03 . i7-10875H (<75W) . 6.8 . Chimbalix 24.8 . LG 10.12
-example . ? . GPU . Radeon RX 9999 . Mesa 25.0.7 . Ryzen 99 99999X3D . 6.8 . Chimbalix 24.8 . LG 10.12

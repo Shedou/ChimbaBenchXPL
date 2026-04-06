@@ -32,8 +32,8 @@ func scene_description_update():
 	if selected_test == "Texture2048":
 		get_node("List/Description").set_text(text_texture16384)
 	
-	if selected_test == "Secret":
-		get_node("List/Description").set_text("This scene is not intended for testing.")
+	if selected_test == "PreHeat":
+		get_node("List/Description").set_text("This scene is too simple for video cards, so the CPU will be the bottleneck in most cases...")
 
 func _on_Settings_Apply_pressed():
 	get_node("/root/Main").resize_multi(selected_resolution)
@@ -51,7 +51,7 @@ func select_scene_fill():
 	get_node(btn_select_scene).add_item("Texture Fill (512 MB)", 4)
 	get_node(btn_select_scene).add_item("Texture Fill (1024 MB)", 5)
 	get_node(btn_select_scene).add_item("Texture Fill (16384x16384 ~1053 MB)", 6)
-	get_node(btn_select_scene).add_item("...", 7)
+	get_node(btn_select_scene).add_item("PreHeat", 7)
 
 func _on_Select_Scene_item_selected( ID ):
 	if ID == 0: selected_test = "Simple"
@@ -61,7 +61,7 @@ func _on_Select_Scene_item_selected( ID ):
 	elif ID == 4: selected_test = "Texture512"
 	elif ID == 5: selected_test = "Texture1024"
 	elif ID == 6: selected_test = "Texture2048"
-	elif ID == 7: selected_test = "Secret"
+	elif ID == 7: selected_test = "PreHeat"
 	scene_description_update()
 
 func _on_Resolution_Button_item_selected( ID ):

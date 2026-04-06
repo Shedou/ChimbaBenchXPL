@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://Scenes/Secret/Flatpak-Illustrarion.webp" type="Texture" id=1]
+[ext_resource path="res://Scenes/PreHeat/Flatpak-Illustrarion.webp" type="Texture" id=1]
 
 [sub_resource type="GDScript" id=1]
 
@@ -56,7 +56,7 @@ textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
 
-[node name="Secret_Scene" type="Spatial"]
+[node name="PreHeat_Scene" type="Spatial"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script/script = SubResource( 1 )

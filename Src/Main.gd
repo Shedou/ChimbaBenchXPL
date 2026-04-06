@@ -131,21 +131,36 @@ func _fixed_process(delta): fps_monitor_fixed_process(delta)
 		if bench_start == 1 && bench_start_batch == 0: benchmark()
 		if bench_start_batch == 1:
 			if bench_start == 3:
-				if bench_start_batch_counter <= 3:
+				if bench_start_batch_counter <= 5:
+					main_display_size = OS.get_screen_size()
+					var multix2 = 2; var multix1 = 1
 					if bench_start_batch_counter == 0:
+						if window_size_default * multix2 <= main_display_size:
+							get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(1)
+							get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(7)
+							bench_start = 2
+						else: bench_start_batch_counter = 1
+					if bench_start_batch_counter == 1:
+						get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(0)
+						get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(7)
+						bench_start = 2
+					if bench_start_batch_counter == 2:
 						get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(0)
 						get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(0)
 						bench_start = 2
-					elif bench_start_batch_counter == 1:
-						get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(1)
-						get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(0)
-						bench_start = 2
-					elif bench_start_batch_counter == 2:
+					if bench_start_batch_counter == 3:
+						if window_size_default * multix2 <= main_display_size:
+							get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(1)
+							get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(0)
+							bench_start = 2
+						else: bench_start_batch_counter = 5
+					if bench_start_batch_counter == 4:
 						get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(1)
 						get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(1)
 						bench_start = 2
-					elif bench_start_batch_counter == 3:
-						get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(0)
+					if bench_start_batch_counter == 5:
+						if window_size_default * multix1 <= main_display_size:
+							get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(0)
 						get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(1)
 						bench_start = 2
 					bench_start_batch_counter += 1

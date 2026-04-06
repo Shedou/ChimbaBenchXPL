@@ -1,0 +1,5 @@
+ChimbaBenchXPL - A3 | Last list update: 2026-04-02
+PreHeat Test : 1280x720 : Windows
+Fps . Reference . Limiter . GPU . Driver . CPU . OS
+======================================================================================
+example . ~ . CPU . Radeon RX 470 . Adrenalin 21.5.2 . Athlon II x2 245e . Windows 7

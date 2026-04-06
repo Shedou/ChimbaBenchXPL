@@ -13,20 +13,22 @@ var ResultsT = []
 const result_files = {
 "Simple360pComplex":"/DB/Results-Simple-360p-Complex.txt",
 "Simple720pComplex":"/DB/Results-Simple-720p-Complex.txt",
-"Shader360pComplex":"/DB/Results-Shader-360p-Complex.txt",
-"Shader720pComplex":"/DB/Results-Shader-720p-Complex.txt",
 "Simple360pWindows":"/DB/Results-Simple-360p-Windows.txt",
 "Simple720pWindows":"/DB/Results-Simple-720p-Windows.txt",
-"Shader360pWindows":"/DB/Results-Shader-360p-Windows.txt",
-"Shader720pWindows":"/DB/Results-Shader-720p-Windows.txt",
 "Simple360pLinux":"/DB/Results-Simple-360p-Linux.txt",
 "Simple720pLinux":"/DB/Results-Simple-720p-Linux.txt",
+"Shader360pComplex":"/DB/Results-Shader-360p-Complex.txt",
+"Shader720pComplex":"/DB/Results-Shader-720p-Complex.txt",
+"Shader360pWindows":"/DB/Results-Shader-360p-Windows.txt",
+"Shader720pWindows":"/DB/Results-Shader-720p-Windows.txt",
 "Shader360pLinux":"/DB/Results-Shader-360p-Linux.txt",
 "Shader720pLinux":"/DB/Results-Shader-720p-Linux.txt",
-"Simple360pWINE":"/DB/Results-Simple-360p-WINE.txt",
-"Simple720pWINE":"/DB/Results-Simple-720p-WINE.txt",
-"Shader360pWINE":"/DB/Results-Shader-360p-WINE.txt",
-"Shader720pWINE":"/DB/Results-Shader-720p-WINE.txt",
+"PreHeat360pComplex":"/DB/Results-PreHeat-360p-Complex.txt",
+"PreHeat720pComplex":"/DB/Results-PreHeat-720p-Complex.txt",
+"PreHeat360pWindows":"/DB/Results-PreHeat-360p-Windows.txt",
+"PreHeat720pWindows":"/DB/Results-PreHeat-720p-Windows.txt",
+"PreHeat360pLinux":"/DB/Results-PreHeat-360p-Linux.txt",
+"PreHeat720pLinux":"/DB/Results-PreHeat-720p-Linux.txt",
 }
 
 func _ready():
@@ -55,16 +57,16 @@ func select_list_fill():
 	get_node(btn_select_list).add_item("Windows - 1280x720", 3)
 	get_node(btn_select_list).add_item("Linux - 640x360", 4)
 	get_node(btn_select_list).add_item("Linux - 1280x720", 5)
-	get_node(btn_select_list).add_item("WINE - 640x360", 6)
-	get_node(btn_select_list).add_item("WINE - 1280x720", 7)
 
 func select_list_scene_fill():
 	get_node(btn_select_list_scene).add_item("Simple Test", 0)
 	get_node(btn_select_list_scene).add_item("Shader Test", 1)
+	get_node(btn_select_list_scene).add_item("PreHeat Test", 2)
 
 func _on_Select_List_Scene_item_selected( ID ):
 	if ID == 0: selected_scene = "Simple"
-	elif ID == 1: selected_scene = "Shader"
+	if ID == 1: selected_scene = "Shader"
+	if ID == 2: selected_scene = "PreHeat"
 	list_fill(selected_platform, selected_scene)
 
 func _on_Select_List_item_selected( ID ):
@@ -74,6 +76,4 @@ func _on_Select_List_item_selected( ID ):
 	elif ID == 3: selected_platform = "720pWindows"
 	elif ID == 4: selected_platform = "360pLinux"
 	elif ID == 5: selected_platform = "720pLinux"
-	elif ID == 6: selected_platform = "360pWINE"
-	elif ID == 7: selected_platform = "720pWINE"
 	list_fill(selected_platform, selected_scene)

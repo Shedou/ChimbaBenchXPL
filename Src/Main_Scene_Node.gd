@@ -8,7 +8,7 @@ const scene_list = {
 	"Texture512":"res://Scenes/Texture512/Scene_Texture.tscn",
 	"Texture1024":"res://Scenes/Texture1024/Scene_Texture.tscn",
 	"Texture2048":"res://Scenes/Texture2048/Scene_Texture.tscn",
-	"Secret":"res://Scenes/Secret/Scene_Secret.tscn"
+	"PreHeat":"res://Scenes/PreHeat/Scene_PreHeat.tscn"
 }
 
 var scene_instance

@@ -16,7 +16,7 @@ int main() {
     }
 
     if (deviceIndex == 0) {
-        std::cerr << "Failed to get display device info." << std::endl;
+        std::cerr << "Failed to get GPU info." << std::endl;
     }
 
     return 0;
