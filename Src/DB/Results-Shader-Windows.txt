@@ -1,0 +1,9 @@
+Shader Test : Windows
+ChimbaBenchXPL - A3 : Last update: 2026-04-07
+Fps (360p | 720p) . OS . Driver
+======================================================================================
+ PC - NVIDIA GeForce RTX 5080 - AMD Ryzen 7 7800X3D
+3143 | 2435 . Windows 11 . 26200.8037 . 32.0.15.9579 (NVIDIA 595.97)
+
+ PC - NVIDIA GeForce RTX 3070 Frankenstein - AMD Ryzen 7 1700
+1655 | 805 . Windows 11 . 26200.8037 . 32.0.15.9159 (NVIDIA 591.59)

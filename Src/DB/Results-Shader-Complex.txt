@@ -1,0 +1,24 @@
+Shader Test : Complex (All Platforms)
+ChimbaBenchXPL - A3 : Last update: 2026-04-07
+Fps (360p | 720p) . OS . Driver
+======================================================================================
+ Asus VivoBook Go 14 (E410MA-BV1517) - Intel UHD 600 - Intel Celeron N4020
+24 | 10 . Windows 10     . 19043.1200 . 31.0.101.2134 DCH
+26 | 13 . Chimbalix 24.8 . Linux 6.8  . i915 + Mesa 25.0.7
+
+ Chi-PC-A780L - GTX 750 - Athlon x2 7550 (!!! OLD VERSION !!!)
+339 | 126 . Windows XP SP3 . NVIDIA 340.52
+334 | 126 . Windows 7 SP1  . NVIDIA 340.52
+22 | 15 . Chimbalix 24.8  . Linux 6.8  . Mesa 25.0.7
+22 | 15 . Fedora Linux 43 . Linux 6.17 . Mesa 25.2.4
+22 | 15 . Linux Mint 22.2 . Linux 6.14 . Mesa 25.0.7
+22 | 16 . Nobara Linux 43 . Linux 6.18 . Mesa 25.3.2
+20 | 15 . Garuda Linux    . Linux 6.17 . Mesa 25.2.6
+
+ Chi-PC-A780L - Radeon 3100 - Athlon x2 7550 (!!! OLD VERSION !!!)
+5 | 2 . Windows 7 SP1   . AMD Catalyst 13.4
+2 | 1 . Chimbalix 24.8  . Linux 6.8  . Mesa 25.0.7
+2 | 1 . Fedora Linux 43 . Linux 6.17 . Mesa 25.2.4
+2 | 1 . Linux Mint 22.2 . Linux 6.14 . Mesa 25.0.7
+2 | 1 . Nobara Linux 43 . Linux 6.18 . Mesa 25.3.2
+2 | 1 . Garuda Linux    . Linux 6.17 . Mesa 25.2.6

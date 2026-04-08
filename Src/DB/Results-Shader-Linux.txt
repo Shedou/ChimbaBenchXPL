@@ -1,0 +1,6 @@
+Shader Test : Linux
+ChimbaBenchXPL - A3 : Last update: 2026-04-07
+Fps (360p | 720p) . OS . Driver
+======================================================================================
+ Asus VivoBook Go 14 (E410MA-BV1517) - Intel UHD 600 - Intel Celeron N4020
+Example | Example . Chimbalix 24.8 . Linux 6.8  . i915 + Mesa 25.0.7

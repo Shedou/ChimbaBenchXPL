@@ -1,0 +1,7 @@
+PreHeat Test : Complex (All Platforms)
+ChimbaBenchXPL - A3 : Last update: 2026-04-07
+Fps (360p | 720p) . OS . Driver
+======================================================================================
+ Asus VivoBook Go 14 (E410MA-BV1517) - Intel UHD 600 - Intel Celeron N4020
+385 | 86  . Windows 10     . 19043.1200 . 31.0.101.2134 DCH
+880 | 257 . Chimbalix 24.8 . Linux 6.8  . i915 + Mesa 25.0.7

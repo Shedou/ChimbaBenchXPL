@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=1]
 
-[ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Main_Scene_Node.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Scene_Node.gd" type="Script" id=2]
 [ext_resource path="res://Default_Theme.tres" type="Theme" id=3]
-[ext_resource path="res://Main_GUI_MID_Scenes.gd" type="Script" id=4]
-[ext_resource path="res://Main_GUI_MID_About.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Scenes.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/About.gd" type="Script" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://Main_GUI_MID_Results.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Results.gd" type="Script" id=7]
 [ext_resource path="res://References/Default290.webp" type="Texture" id=8]
-[ext_resource path="res://Main_GUI_DOWN.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/GUI_DOWN.gd" type="Script" id=9]
 
 [node name="Main" type="Node"]
 
@@ -365,7 +365,7 @@ margin/bottom = 210.0
 text = "- Godot Engine: MIT License (https://godotengine.org/license).
 - Textures and images are licensed under CC BY-SA 4.
 - Main used font: determination2 ( Anonymous ).
-- Contributors: ..."
+- Contributors: mysql_connect, ..."
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0

@@ -1,7 +1,5 @@
 extends Node
 
-
-
 var main_render_size = OS.get_video_mode_size() # Vector2()
 var main_display_size = OS.get_screen_size()
 var main_rd_sizes = str(str(main_render_size.width)+"x"+str(main_render_size.height))+" - "+str(str(main_display_size.width)+"x"+str(main_display_size.height))
@@ -9,13 +7,7 @@ var render_size_multiplier = 1.0
 const window_size_default = Vector2(640, 360)
 var window_size
 var wine_detect = ["no"]
-var main_cmd_line = OS.get_cmdline_args()
-var main_cmd_execute = OS.get_executable_path()
-var main_execute_path = main_cmd_execute.get_base_dir()
-var main_current_os = OS.get_name()
-var main_current_os_name = "undefined"
-var main_current_os_name_arr = [""]
-var main_current_os_kernel = ["undefined"]
+
 var main_cpu_name = ["undefined"]
 var main_cpu_name_str = ""
 var main_gpu_name = ["undefined"]
@@ -23,8 +15,6 @@ var main_gpu_name_str = ""
 var main_gpu_name_all_str = ""
 var main_gpu_driver_name = [""]
 var main_gpu_driver_name_str = ""
-var main_current_os_kernel_str = ""
-var main_exe_dir = OS.get_executable_path().get_base_dir();
 
 var reference_texture = null
 var theme_default = load("res://Default_Theme.tres")
@@ -61,7 +51,7 @@ var result_file_code = null
 var loaded_scene = "Main Menu"
 
 func _ready():
-	result_file_path = str(main_execute_path+"/Benchmark-Result.txt")
+	result_file_path = str(CBXPL.main_execute_path+"/Benchmark-Result.txt")
 	var full_command = str(OS.get_executable_path()) + " " + str(StringArray(OS.get_cmdline_args()).append(" "))
 	OS.set_window_title(str(CBXPL.project_name)+" - "+str(CBXPL.project_version))
 	get_hw_info()
@@ -77,26 +67,26 @@ func _ready():
 func get_hw_info():
 	main_cpu_name[0] = "not detected"
 	main_gpu_name[0] = "not detected"
-	if main_current_os == "Windows":
-		main_current_os_name = "Windows"
-		OS.execute("cmd", ["/c", "ver"], true, main_current_os_kernel)
+	if CBXPL.main_current_os == "Windows":
+		CBXPL.main_current_os_name = "Windows"
+		OS.execute("cmd", ["/c", "ver"], true, CBXPL.main_current_os_kernel)
 		#OS.execute("cmd", ["/c", "reg query HKLM\\HARDWARE\\DEVICEMAP\\VIDEO /v \\Device\\Video0"], true, main_gpu_driver_name)
-		OS.execute(main_exe_dir+"\\Helpers\\Wine-Detect.bat", [""], true, wine_detect)
-		OS.execute(main_exe_dir+"\\Helpers\\Windows-CPU-Info.bat", [""], true, main_cpu_name)
-		OS.execute(main_exe_dir+"\\Helpers\\Windows-GPU-Info.exe", [""], true, main_gpu_name)
-	elif main_current_os == "X11":
-		OS.execute("uname", ["-r"], true, main_current_os_kernel)
-		main_current_os_name = "Linux"
+		OS.execute(CBXPL.main_execute_path+"\\Helpers\\Wine-Detect.bat", [""], true, wine_detect)
+		OS.execute(CBXPL.main_execute_path+"\\Helpers\\Windows-CPU-Info.bat", [""], true, main_cpu_name)
+		OS.execute(CBXPL.main_execute_path+"\\Helpers\\Windows-GPU-Info.exe", [""], true, main_gpu_name)
+	elif CBXPL.main_current_os == "X11":
+		OS.execute("uname", ["-r"], true, CBXPL.main_current_os_kernel)
+		CBXPL.main_current_os_name = "Linux"
 		OS.execute("bash", ["-c", "lspci -k | grep -A 3 -E '(VGA|3D)' | grep 'in use' | cut -d ':' -f2 | tr -d ' '"], true, main_gpu_driver_name)
-		OS.execute(main_exe_dir+"/Helpers/Linux-OS-Name.sh", [""], true, main_current_os_name_arr)
-		if main_current_os_name_arr[0] != "":
-			main_current_os_name = str(main_current_os_name_arr[0]).replace("\n", "")
+		OS.execute(CBXPL.main_execute_path+"/Helpers/Linux-OS-Name.sh", [""], true, CBXPL.main_current_os_name_arr)
+		if CBXPL.main_current_os_name_arr[0] != "":
+			CBXPL.main_current_os_name = str(CBXPL.main_current_os_name_arr[0]).replace("\n", "")
 		OS.execute("bash", ["-c", "cat /proc/cpuinfo | grep 'model name' | head -n1 | cut -d: -f2 | sed 's/^[ \t]*//'"], true, main_cpu_name)
 		OS.execute("bash", ["-c", "lspci | grep -iE 'vga|3d|display' | cut -d':' -f3 | sed 's/^ //'"], true, main_gpu_name)
 		if main_gpu_name[0] == "":
 			OS.execute("bash", ["-c", "cat /sys/class/drm/card*/device/uevent | grep PCI_ID | cut -d'=' -f2"], true, main_gpu_name)
 	
-	main_current_os_kernel_str = str(main_current_os_kernel[0])
+	CBXPL.main_current_os_kernel_str = str(CBXPL.main_current_os_kernel[0])
 	main_cpu_name_str = str(main_cpu_name[0])
 	main_gpu_name_str = str(main_gpu_name[0])
 	main_gpu_driver_name_str = str(main_gpu_driver_name[0])
@@ -108,14 +98,13 @@ func get_hw_info():
 	wine_detect_regex.compile("WINE")
 	var result = wine_detect_regex.find(str(wine_detect[0]))
 	
-	if result == 0: main_current_os_name = "Windows (WINE)"
+	if result == 0: CBXPL.main_current_os_name = "Windows (WINE)"
 
 func update_hw_info_labels():
 	get_node("GUI_UP/CPU").set_text(str(main_cpu_name[0]))
 	get_node("GUI_UP/VGA").set_text(str(main_gpu_name[0]))
 	get_node("GUI_UP/display").set_text(main_rd_sizes)
-	get_node("GUI_UP/OS").set_text("OS: "+str(main_current_os_name))
-	get_node("Label").set_text(CBXPL.test)
+	get_node("GUI_UP/OS").set_text("OS: "+str(CBXPL.main_current_os_name))
 
 func reference_set(name):
 	if render_size_multiplier == 2.0: reference_texture = load("res://References/"+name+"580.webp")
@@ -307,8 +296,8 @@ func result_save():
 		result_file.seek_end()
 		result_file.store_string("\n")
 		result_file.store_string(" "+tYear+"-"+tMonth+"-"+tDay+" - "+tHour+":"+tMin+":"+tSec)
-		result_file.store_string(" - "+CBXPL.project_name+" "+CBXPL.project_version+" - "+main_current_os_name)
-		result_file.store_string(" - "+main_current_os_kernel_str.replace("\n", "")+"\n")
+		result_file.store_string(" - "+CBXPL.project_name+" "+CBXPL.project_version+" - "+CBXPL.main_current_os_name)
+		result_file.store_string(" - "+CBXPL.main_current_os_kernel_str.replace("\n", "")+"\n")
 		result_file.store_string("CPU: "+main_cpu_name_str.replace("\n", "")+"\n")
 		result_file.store_string("GPU: "+main_gpu_name_str.replace("\n", "")+" - ("+main_gpu_driver_name_str.replace("\n", "")+")\n")
 		#result_file.store_string("GPUs List: "+main_gpu_name_all_str.replace("\n", " : ")+"\n")
@@ -340,48 +329,18 @@ func on_resize():
 	benchmark_reset("New settings...")
 	update_hw_info_labels()
 
-var all_nodes = [
-"GUI_MID",
-"GUI_MID/Scenes",
-"GUI_MID/Scenes/Settings",
-"GUI_MID/Scenes/Settings/Label", "GUI_MID/Scenes/Settings/Resolution",
-"GUI_MID/Scenes/Settings/Resolution_Button", "GUI_MID/Scenes/Settings/Settings_Apply",
-"GUI_MID/Scenes/List",
-"GUI_MID/Scenes/List/Label", "GUI_MID/Scenes/List/Select_Scene", "GUI_MID/Scenes/List/Scene_Load", "GUI_MID/Scenes/List/Description",
-"GUI_MID/About",
-"GUI_MID/About/Background",
-"GUI_MID/About/Icon",
-"GUI_MID/About/Project_URL",
-"GUI_MID/About/GitHub_URL",
-"GUI_MID/About/Blog_URL",
-"GUI_MID/About/Developers",
-"GUI_MID/About/Lead_Developer",
-"GUI_MID/About/Background/Project_Name",
-"GUI_MID/About/Background/Project_License",
-"GUI_MID/About/Background/Godot_Engine",
-"GUI_MID/Reference",
-"GUI_MID/Results",
-"GUI_MID/Results/Background", "GUI_MID/Results/Select_List_Scene",
-"GUI_MID/Results/Select_List", "GUI_MID/Results/ItemList",
-"GUI_UP",
-"GUI_UP/fps", "GUI_UP/benchmark", "GUI_UP/VGA", "GUI_UP/CPU", "GUI_UP/OS", "GUI_UP/display",
-"GUI_DOWN",
-"GUI_DOWN/BTN_Exit", "GUI_DOWN/BTN_Scenes", "GUI_DOWN/BTN_About", "GUI_DOWN/BTN_Results",
-"GUI_DOWN/BTN_Benchmark", "GUI_DOWN/BTN_Save", "GUI_DOWN/BTN_Reference"
-]
-
 func resize_multi(multiplier):
 	main_display_size = OS.get_screen_size()
 	if window_size_default * multiplier <= main_display_size:
 		window_size = window_size_default * multiplier
 		OS.set_window_size(window_size)
 		OS.set_window_position(main_display_size / 2 - window_size / 2)
-		for item in all_nodes:
+		for item in NODES.GUI:
 			if get_node(item).has_method("set_theme"): get_node(item).set_theme(theme_default)
 			if get_node(item).has_method("get_size"):
 				get_node(item).set_size(get_node(item).get_size() / render_size_multiplier)
 			get_node(item).set_pos(get_node(item).get_pos() / render_size_multiplier)
-		for item in all_nodes:
+		for item in NODES.GUI:
 			if get_node(item).has_method("set_theme"):
 				if multiplier == 2.0: get_node(item).set_theme(theme_default_big)
 			if get_node(item).has_method("get_size"):
