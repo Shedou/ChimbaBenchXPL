@@ -6,15 +6,6 @@ var main_rd_sizes = str(str(main_render_size.width)+"x"+str(main_render_size.hei
 var render_size_multiplier = 1.0
 const window_size_default = Vector2(640, 360)
 var window_size
-var wine_detect = ["no"]
-
-var main_cpu_name = ["undefined"]
-var main_cpu_name_str = ""
-var main_gpu_name = ["undefined"]
-var main_gpu_name_str = ""
-var main_gpu_name_all_str = ""
-var main_gpu_driver_name = [""]
-var main_gpu_driver_name_str = ""
 
 var reference_texture = null
 var theme_default = load("res://Default_Theme.tres")
@@ -54,7 +45,7 @@ func _ready():
 	result_file_path = str(CBXPL.main_execute_path+"/Benchmark-Result.txt")
 	var full_command = str(OS.get_executable_path()) + " " + str(StringArray(OS.get_cmdline_args()).append(" "))
 	OS.set_window_title(str(CBXPL.project_name)+" - "+str(CBXPL.project_version))
-	get_hw_info()
+	#DHW.get_hw_info()
 	update_hw_info_labels()
 	
 	set_process(true); set_fixed_process(true)
@@ -64,47 +55,11 @@ func _ready():
 	OS.set_iterations_per_second(process_fixed_target_fps_def)
 	reference_set("Default")
 
-func get_hw_info():
-	main_cpu_name[0] = "not detected"
-	main_gpu_name[0] = "not detected"
-	if CBXPL.main_current_os == "Windows":
-		CBXPL.main_current_os_name = "Windows"
-		OS.execute("cmd", ["/c", "ver"], true, CBXPL.main_current_os_kernel)
-		#OS.execute("cmd", ["/c", "reg query HKLM\\HARDWARE\\DEVICEMAP\\VIDEO /v \\Device\\Video0"], true, main_gpu_driver_name)
-		OS.execute(CBXPL.main_execute_path+"\\Helpers\\Wine-Detect.bat", [""], true, wine_detect)
-		OS.execute(CBXPL.main_execute_path+"\\Helpers\\Windows-CPU-Info.bat", [""], true, main_cpu_name)
-		OS.execute(CBXPL.main_execute_path+"\\Helpers\\Windows-GPU-Info.exe", [""], true, main_gpu_name)
-	elif CBXPL.main_current_os == "X11":
-		OS.execute("uname", ["-r"], true, CBXPL.main_current_os_kernel)
-		CBXPL.main_current_os_name = "Linux"
-		OS.execute("bash", ["-c", "lspci -k | grep -A 3 -E '(VGA|3D)' | grep 'in use' | cut -d ':' -f2 | tr -d ' '"], true, main_gpu_driver_name)
-		OS.execute(CBXPL.main_execute_path+"/Helpers/Linux-OS-Name.sh", [""], true, CBXPL.main_current_os_name_arr)
-		if CBXPL.main_current_os_name_arr[0] != "":
-			CBXPL.main_current_os_name = str(CBXPL.main_current_os_name_arr[0]).replace("\n", "")
-		OS.execute("bash", ["-c", "cat /proc/cpuinfo | grep 'model name' | head -n1 | cut -d: -f2 | sed 's/^[ \t]*//'"], true, main_cpu_name)
-		OS.execute("bash", ["-c", "lspci | grep -iE 'vga|3d|display' | cut -d':' -f3 | sed 's/^ //'"], true, main_gpu_name)
-		if main_gpu_name[0] == "":
-			OS.execute("bash", ["-c", "cat /sys/class/drm/card*/device/uevent | grep PCI_ID | cut -d'=' -f2"], true, main_gpu_name)
-	
-	CBXPL.main_current_os_kernel_str = str(CBXPL.main_current_os_kernel[0])
-	main_cpu_name_str = str(main_cpu_name[0])
-	main_gpu_name_str = str(main_gpu_name[0])
-	main_gpu_driver_name_str = str(main_gpu_driver_name[0])
-	
-	#for item in range(main_gpu_name.size()):
-	#	main_gpu_name_all_str = str(main_gpu_name[item])
-	
-	var wine_detect_regex = RegEx.new()
-	wine_detect_regex.compile("WINE")
-	var result = wine_detect_regex.find(str(wine_detect[0]))
-	
-	if result == 0: CBXPL.main_current_os_name = "Windows (WINE)"
-
 func update_hw_info_labels():
-	get_node("GUI_UP/CPU").set_text(str(main_cpu_name[0]))
-	get_node("GUI_UP/VGA").set_text(str(main_gpu_name[0]))
+	get_node("GUI_UP/CPU").set_text(str(DHW.cpu_name))
+	get_node("GUI_UP/VGA").set_text(str(DHW.gpu_name))
 	get_node("GUI_UP/display").set_text(main_rd_sizes)
-	get_node("GUI_UP/OS").set_text("OS: "+str(CBXPL.main_current_os_name))
+	get_node("GUI_UP/OS").set_text("OS: "+str(DHW.os_name))
 
 func reference_set(name):
 	if render_size_multiplier == 2.0: reference_texture = load("res://References/"+name+"580.webp")
@@ -154,7 +109,13 @@ func _fixed_process(delta): fps_monitor_fixed_process(delta)
 					bench_start_batch_counter += 1
 					get_node("GUI_MID/Scenes")._on_Settings_Apply_pressed()
 					get_node("GUI_MID/Scenes")._on_Scene_Load_pressed()
-				else: benchmark_batch_reset("stop_batch")
+				else:
+					benchmark_batch_reset("stop_batch")
+					get_node("GUI_MID/Scenes")._on_Resolution_Button_item_selected(7)
+					get_node("GUI_MID/Scenes")._on_Select_Scene_item_selected(7)
+					get_node("GUI_MID/Scenes")._on_Settings_Apply_pressed()
+					get_node("GUI_MID/Scenes")._on_Scene_Load_pressed()
+					OS.set_target_fps(60)
 			
 			if bench_start_batch == 1:
 				benchmark()
@@ -293,17 +254,22 @@ func result_save():
 		result_file_code = result_file.open(result_file_path, File.READ_WRITE)
 	
 	if result_file_code == OK:
-		result_file.seek_end()
-		result_file.store_string("\n")
-		result_file.store_string(" "+tYear+"-"+tMonth+"-"+tDay+" - "+tHour+":"+tMin+":"+tSec)
-		result_file.store_string(" - "+CBXPL.project_name+" "+CBXPL.project_version+" - "+CBXPL.main_current_os_name)
-		result_file.store_string(" - "+CBXPL.main_current_os_kernel_str.replace("\n", "")+"\n")
-		result_file.store_string("CPU: "+main_cpu_name_str.replace("\n", "")+"\n")
-		result_file.store_string("GPU: "+main_gpu_name_str.replace("\n", "")+" - ("+main_gpu_driver_name_str.replace("\n", "")+")\n")
-		#result_file.store_string("GPUs List: "+main_gpu_name_all_str.replace("\n", " : ")+"\n")
-		result_file.store_string("Result: "+str(bench_result)+" - "+loaded_scene+" - "+str(main_render_size.x)+"x"+str(main_render_size.y))
-		result_file.store_string("\n")
-		result_file.close()
+		if bench_start_batch_counter == 0 || bench_start_batch_counter == 1:
+			result_file.seek_end()
+			result_file.store_string("\n")
+			result_file.store_string(" "+tYear+"-"+tMonth+"-"+tDay+" - "+tHour+":"+tMin+":"+tSec)
+			result_file.store_string(" - "+CBXPL.project_name+" "+CBXPL.project_version+" - "+DHW.os_name)
+			result_file.store_string(" - "+DHW.os_kernel+"\n")
+			result_file.store_string("CPU: "+DHW.cpu_name+"\n")
+			result_file.store_string("GPU: "+DHW.gpu_name+"\n")
+			result_file.store_string("Result: "+str(bench_result)+" - "+loaded_scene+" - "+str(main_render_size.x)+"x"+str(main_render_size.y))
+			result_file.store_string("\n")
+			result_file.close()
+		else:
+			result_file.seek_end()
+			result_file.store_string("Result: "+str(bench_result)+" - "+loaded_scene+" - "+str(main_render_size.x)+"x"+str(main_render_size.y))
+			result_file.store_string("\n")
+			result_file.close()
 	else:
 		print("result_file_code: ", result_file_code)
 	pass

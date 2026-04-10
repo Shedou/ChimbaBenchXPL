@@ -6,7 +6,7 @@ const GUI = [
 "GUI_MID/Scenes/Settings",
 "GUI_MID/Scenes/Settings/Label", "GUI_MID/Scenes/Settings/Resolution",
 "GUI_MID/Scenes/Settings/Resolution_Button", "GUI_MID/Scenes/Settings/Settings_Apply",
-"GUI_MID/Scenes/List",
+"GUI_MID/Scenes/List", "GUI_MID/Scenes/List/Batch",
 "GUI_MID/Scenes/List/Label", "GUI_MID/Scenes/List/Select_Scene",
 "GUI_MID/Scenes/List/Scene_Load", "GUI_MID/Scenes/List/Description",
 "GUI_MID/About",
