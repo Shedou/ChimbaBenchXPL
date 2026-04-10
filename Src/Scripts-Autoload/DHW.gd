@@ -22,6 +22,7 @@ func _ready():
 
 func get_hw_info():
 	var output = []
+	var chmod_output = [""];
 	
 	if os_type == "Windows":
 		os_name = "Windows"
@@ -31,6 +32,7 @@ func get_hw_info():
 		var temp_kernel = []
 		OS.execute("uname", ["-r"], true, temp_kernel)
 		os_kernel = str(temp_kernel[0]).replace("\n", "")
+		OS.execute("chmod", ["u+x", linux_helper], true, chmod_output)
 		OS.execute("/bin/bash", [linux_helper], true, output)
 	
 	if output.size() > 0:
