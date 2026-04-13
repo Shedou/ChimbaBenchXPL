@@ -1,5 +1,5 @@
 Shader Test : Linux : ChimbaBenchXPL A3 : 2026-04-13
-Fps (360p | 720p) . OS . Driver . Notes
+Fps (720p | 360p) . OS . Driver . Notes
 ======================================================================================
  NVIDIA GeForce 6100 : AMD Athlon(tm) 64 Processor 3200+ : GA-K8N51GMF-9 : 2 GB DDR 128-Bit
 1 | 1 . Chimbalix 24.8 . Linux 6.1  . NV4E + Mesa 24.2.8 . (Live-CD, Stock)

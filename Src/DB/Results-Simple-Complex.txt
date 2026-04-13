@@ -1,9 +1,9 @@
 Simple Test : Complex : ChimbaBenchXPL A3 : 2026-04-13
-Fps (360p | 720p) . OS . Driver . Notes
+Fps (720p | 360p) . OS . Driver . Notes
 ======================================================================================
  Asus VivoBook Go 14 (E410MA-BV1517) : Intel UHD 600 : Intel Celeron N4020 : 4 GB DDR4-2400 64-Bit
-273 | 132 . Chimbalix 24.8 . Linux 6.8  . i915 + Mesa 25.0.7
-213 | 75  . Windows 10     . 19043.1200 . 31.0.101.2134 DCH
+132 | 273 . Chimbalix 24.8 . Linux 6.8  . i915 + Mesa 25.0.7
+75  | 213 . Windows 10     . 19043.1200 . 31.0.101.2134 DCH
 
  NVIDIA GeForce GTX 750 - AMD Athlon x2 7550 . 4 GB DDR2-800 128-Bit . Biostar A780L
 1273 | 2134 . Windows XP SP3 . 5.1.2600   . 6.14.13.4052 (340.52)
