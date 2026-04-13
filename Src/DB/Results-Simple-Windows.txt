@@ -1,12 +1,24 @@
-Simple Test : Windows
-ChimbaBenchXPL - A3 : Last update: 2026-04-07
-Fps (360p | 720p) . OS . Driver
+Simple Test : Windows : ChimbaBenchXPL A3 : 2026-04-13
+Fps (720p | 360p) . OS . Driver . Notes
 ======================================================================================
- PC - NVIDIA GeForce RTX 5080 - AMD Ryzen 7 7800X3D
-3057 | 2983 . Windows 11 . 26200.8037 . 32.0.15.9579 (NVIDIA 595.97)
+ NVIDIA GeForce RTX 5080 : AMD Ryzen 7 7800X3D 8-Core Processor
+3850 | 3945 . Windows 11 . 26200.8037 . 32.0.15.9597
+2983 | 3057. Windows 11 . 26200.8037 . 32.0.15.9579 . (with background tasks)
 
- PC - NVIDIA GeForce RTX 3070 Frankenstein - AMD Ryzen 7 1700
-1655 | 1767 . Windows 11 . 26200.8037 . 32.0.15.9159 (NVIDIA 591.59)
+ NVIDIA GeForce RTX 5070 : AMD Ryzen 7 5800X 8-Core Processor
+3776 | 3540 . Windows 11 . 26200.7840 . 32.0.15.9186
 
- PC - Radeon RX 470 - Athlon II x2 245e
-712 | 723 . Windows 7 . SP1 . Adrenalin 21.5.2
+ NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 5 3500X 6-Core Processor
+3469 | 3434 . Windows 11 . 26200.8037 . 32.0.15.9159
+
+ NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 7 1700
+1995 | 1948. Windows 11 . 26200.8037 . 32.0.15.9159
+
+ AMD Radeon RX 470 : Athlon II x2 245e : 8GB DDR2-800
+723 | 712 . Windows 7 . SP1 . Adrenalin 21.5.2
+
+ Intel(R) UHD Graphics 630 : Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
+419 | 949 . Windows 10 . 19045.5371 . 31.0.101.2130
+
+ NVIDIA GeForce GT 520M : Intel(R) Core(TM) i5-2430M CPU @ 2.40GHz
+195 | 485 . Windows 10 . 19045.4291 . 23.21.13.8813

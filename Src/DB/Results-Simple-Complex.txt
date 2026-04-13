@@ -1,24 +1,27 @@
-Simple Test : Complex (All Platforms)
-ChimbaBenchXPL - A3 : Last update: 2026-04-07
-Fps (360p | 720p) . OS . Driver
+Simple Test : Complex : ChimbaBenchXPL A3 : 2026-04-13
+Fps (360p | 720p) . OS . Driver . Notes
 ======================================================================================
- Asus VivoBook Go 14 (E410MA-BV1517) - Intel UHD 600 - Intel Celeron N4020
-213 | 75  . Windows 10     . 19043.1200 . 31.0.101.2134 DCH
+ Asus VivoBook Go 14 (E410MA-BV1517) : Intel UHD 600 : Intel Celeron N4020 : 4 GB DDR4-2400 64-Bit
 273 | 132 . Chimbalix 24.8 . Linux 6.8  . i915 + Mesa 25.0.7
+213 | 75  . Windows 10     . 19043.1200 . 31.0.101.2134 DCH
 
- Chi-PC-A780L - GTX 750 - Athlon x2 7550 (!!! OLD VERSION !!!)
-2106 | 1268 . Windows XP SP3 . NVIDIA 340.52
-1052 | 1066 . Windows 7 SP1  . NVIDIA 340.52
-218 | 116 . Chimbalix 24.8  . Linux 6.8  . Mesa 25.0.7
-177 | 161 . Fedora Linux 43 . Linux 6.17 . Mesa 25.2.4
-221 | 120 . Linux Mint 22.2 . Linux 6.14 . Mesa 25.0.7
-211 | 166 . Nobara Linux 43 . Linux 6.18 . Mesa 25.3.2
-187 | 143 . Garuda Linux    . Linux 6.17 . Mesa 25.2.6
+ NVIDIA GeForce GTX 750 - AMD Athlon x2 7550 . 4 GB DDR2-800 128-Bit . Biostar A780L
+1273 | 2134 . Windows XP SP3 . 5.1.2600   . 6.14.13.4052 (340.52)
+1039 | 1049 . Windows 7 SP1  . 6.1.7601   . 6.14.13.4052 (340.52)
+990 | 2098  . Chimbalix 24.8 . Linux 6.8  . NVIDIA 580.142
+650 | 660   . Windows 10     . 19045.2673 . 6.14.13.4052 (340.52)
+215 | 114 . Linux Mint 22.2 . Linux 6.14 . NV117 - Mesa 25.0.7
+196 | 116 . Chimbalix 24.8  . Linux 6.8  . NV117 - Mesa 25.0.7
+188 | 159 . Nobara Linux 43 . Linux 6.18 . NV117 - Mesa 25.3.2
+173 | 137 . Garuda Linux    . Linux 6.17 . NV117 - Mesa 25.2.6
+167 | 150 . Fedora Linux 43 . Linux 6.17 . NV117 - Mesa 25.2.4
 
- Chi-PC-A780L - Radeon 3100 - Athlon x2 7550 (!!! OLD VERSION !!!)
-85 | 35 . Windows 7 SP1   . AMD Catalyst 13.4
-45 | 25 . Chimbalix 24.8  . Linux 6.8  . Mesa 25.0.7
-42 | 25 . Fedora Linux 43 . Linux 6.17 . Mesa 25.2.4
-44 | 21 . Linux Mint 22.2 . Linux 6.14 . Mesa 25.0.7
-43 | 24 . Nobara Linux 43 . Linux 6.18 . Mesa 25.3.2
-16 | 17 . Garuda Linux    . Linux 6.17 . Mesa 25.2.6
+ AMD Radeon 3100 - AMD Athlon x2 7550 . 4 GB DDR2-800 128-Bit . Biostar A780L
+36 | 85 . Windows 7 SP1   . 6.1.7601   . 8.970.100.0 (Catalyst 13.4)
+35 | 85 . Windows XP SP3  . 5.1.2600   . 8.970.100.0 (Catalyst 13.4)
+32 | 78 . Windows 10      . 19045.2673 . 8.970.100.0 (Catalyst 13.4)
+25 | 46 . Chimbalix 24.8  . Linux 6.8  . NV117 - Mesa 25.0.7
+25 | 44 . Fedora Linux 43 . Linux 6.17 . NV117 - Mesa 25.2.4
+22 | 42 . Linux Mint 22.2 . Linux 6.14 . NV117 - Mesa 25.0.7
+22 | 41 . Nobara Linux 43 . Linux 6.18 . NV117 - Mesa 25.3.2
+16 | 16 . Garuda Linux    . Linux 6.17 . NV117 - Mesa 25.2.6

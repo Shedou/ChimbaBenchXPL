@@ -1,9 +1,21 @@
-Shader Test : Windows
-ChimbaBenchXPL - A3 : Last update: 2026-04-07
-Fps (360p | 720p) . OS . Driver
+Shader Test : Windows : ChimbaBenchXPL A3 : 2026-04-13
+Fps (720p | 360p) . OS . Driver . Notes
 ======================================================================================
- PC - NVIDIA GeForce RTX 5080 - AMD Ryzen 7 7800X3D
-3143 | 2435 . Windows 11 . 26200.8037 . 32.0.15.9579 (NVIDIA 595.97)
+ NVIDIA GeForce RTX 5080 : AMD Ryzen 7 7800X3D 8-Core Processor
+3663 | 4205 . Windows 11 . 26200.8037 . 32.0.15.9597
+2435 | 3143 . Windows 11 . 26200.8037 . 32.0.15.9579 . (with background tasks)
 
- PC - NVIDIA GeForce RTX 3070 Frankenstein - AMD Ryzen 7 1700
-1655 | 805 . Windows 11 . 26200.8037 . 32.0.15.9159 (NVIDIA 591.59)
+ NVIDIA GeForce RTX 5070 : AMD Ryzen 7 5800X 8-Core Processor
+1780 | 3286 . Windows 11 . 26200.7840 . 32.0.15.9186
+
+ NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 5 3500X 6-Core Processor
+842 | 1979 . Windows 11 . 26200.8037 . 32.0.15.9159
+
+ NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 7 1700
+844 | 1823 . Windows 11 . 26200.8037 . 32.0.15.9159
+
+ Intel(R) UHD Graphics 630 : Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
+42 | 105 . Windows 10 . 19045.5371 . 31.0.101.2130
+
+ NVIDIA GeForce GT 520M : Intel(R) Core(TM) i5-2430M CPU @ 2.40GHz
+10 | 20 . Windows 10 . 19045.4291 . 23.21.13.8813

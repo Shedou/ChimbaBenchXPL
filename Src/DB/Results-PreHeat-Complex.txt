@@ -1,7 +1,27 @@
-PreHeat Test : Complex (All Platforms)
-ChimbaBenchXPL - A3 : Last update: 2026-04-07
-Fps (360p | 720p) . OS . Driver
+PreHeat Test : Complex : ChimbaBenchXPL A3 : 2026-04-13
+Fps (360p | 720p) . OS . Driver . Notes
 ======================================================================================
- Asus VivoBook Go 14 (E410MA-BV1517) - Intel UHD 600 - Intel Celeron N4020
-385 | 86  . Windows 10     . 19043.1200 . 31.0.101.2134 DCH
+ Asus VivoBook Go 14 (E410MA-BV1517) : Intel UHD 600 : Intel Celeron N4020 : 4 GB DDR4-2400 64-Bit
 880 | 257 . Chimbalix 24.8 . Linux 6.8  . i915 + Mesa 25.0.7
+385 | 86  . Windows 10     . 19043.1200 . 31.0.101.2134 DCH
+
+ NVIDIA GeForce GTX 750 - AMD Athlon x2 7550 . 4 GB DDR2-800 128-Bit . Biostar A780L
+3230 | 3400 . Windows XP SP3 . 5.1.2600   . 6.14.13.4052 (340.52)
+1854 | 3937 . Chimbalix 24.8 . Linux 6.8  . NVIDIA 580.142
+1080 | 1086 . Windows 7 SP1  . 6.1.7601   . 6.14.13.4052 (340.52)
+718 | 686   . Windows 10     . 19045.2673 . 6.14.13.4052 (340.52)
+204 | 219 . Nobara Linux 43 . Linux 6.18 . NV117 - Mesa 25.3.2
+202 | 213 . Garuda Linux    . Linux 6.17 . NV117 - Mesa 25.2.6
+182 | 191 . Fedora Linux 43 . Linux 6.17 . NV117 - Mesa 25.2.4
+160 | 247 . Linux Mint 22.2 . Linux 6.14 . NV117 - Mesa 25.0.7
+148 | 230 . Chimbalix 24.8  . Linux 6.8  . NV117 - Mesa 25.0.7
+
+ AMD Radeon 3100 - AMD Athlon x2 7550 . 4 GB DDR2-800 128-Bit . Biostar A780L
+170 | 640 . Windows 7 SP1  . 6.1.7601   . 8.970.100.0 (Catalyst 13.4)
+159 | 602 . Windows XP SP3 . 5.1.2600   . 8.970.100.0 (Catalyst 13.4)
+121 | 463 . Windows 10     . 19045.2673 . 8.970.100.0 (Catalyst 13.4)
+79 | 211 . Fedora Linux 43 . Linux 6.17 . NV117 - Mesa 25.2.4
+73 | 183 . Chimbalix 24.8  . Linux 6.8  . NV117 - Mesa 25.0.7
+63 | 194 . Nobara Linux 43 . Linux 6.18 . NV117 - Mesa 25.3.2
+63 | 190 . Linux Mint 22.2 . Linux 6.14 . NV117 - Mesa 25.0.7
+34 | 55  . Garuda Linux    . Linux 6.17 . NV117 - Mesa 25.2.6

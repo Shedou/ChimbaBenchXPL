@@ -1,6 +1,5 @@
-PreHeat Test : Linux
-ChimbaBenchXPL - A3 : Last update: 2026-04-07
-Fps (360p | 720p) . OS . Driver
+PreHeat Test : Linux : ChimbaBenchXPL A3 : 2026-04-13
+Fps (360p | 720p) . OS . Driver . Notes
 ======================================================================================
- Asus VivoBook Go 14 (E410MA-BV1517) - Intel UHD 600 - Intel Celeron N4020
-Example | Example . Chimbalix 24.8 . Linux 6.8  . i915 + Mesa 25.0.7
+ NVIDIA GeForce 6100 : AMD Athlon(tm) 64 Processor 3200+ : GA-K8N51GMF-9 : 2 GB DDR 128-Bit
+18 | 72 . Chimbalix 24.8 . Linux 6.1  . NV4E + Mesa 24.2.8 . (Live-CD, Stock)
