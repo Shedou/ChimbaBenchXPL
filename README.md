@@ -1,6 +1,8 @@
 # ChimbaBenchXPL [![Github Releases](https://img.shields.io/github/downloads/Shedou/ChimbaBenchXPL/total.svg)](https://github.com/Shedou/ChimbaBenchXPL/releases)
 Portable benchmark for old or weak computers (Windows XP+ | Debian 8+ | OpenGL 2.1+).
 
+The database with benchmark results (different PC and laptop configurations) is located in the [DB directory](https://github.com/Shedou/ChimbaBenchXPL/tree/main/Src/DB).
+
 Download: [https://github.com/Shedou/ChimbaBenchXPL/releases](https://github.com/Shedou/ChimbaBenchXPL/releases)
 
 ## System requirements:
