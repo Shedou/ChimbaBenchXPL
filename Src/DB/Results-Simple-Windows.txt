@@ -11,6 +11,9 @@ Fps (720p | 360p) . OS . Driver . Notes
  NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 5 3500X 6-Core Processor
 3469 | 3434 . Windows 11 . 26200.8037 . 32.0.15.9159
 
+ NVIDIA GeForce GTX 1070 : Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
+2728 | 2703 . Windows 10 . 17763.615 . 31.0.15.5123
+
  NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 7 1700
 1995 | 1948. Windows 11 . 26200.8037 . 32.0.15.9159
 
