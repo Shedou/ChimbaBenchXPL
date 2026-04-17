@@ -6,8 +6,8 @@ The database with benchmark results (different PC and laptop configurations) is 
 Download: [https://github.com/Shedou/ChimbaBenchXPL/releases](https://github.com/Shedou/ChimbaBenchXPL/releases)
 
 ## System requirements:
-OS (32-bit): Windows XP+, Debian 8+.\
-OS (64-bit): Windows 7+, Debian 8+.\
+OS (32-bit): Windows XP+, Debian 8+ and other Linux distros.\
+OS (64-bit): Windows 7+, Debian 8+ and other Linux distros.\
 CPU: With SSE2 support and better. (tested on s754 Sempron 2800+ Palermo).\
 GPU: OpenGL 2.1 support required. GeForce 6000+ and Radeon HD 2000+.
 
