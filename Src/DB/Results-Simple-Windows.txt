@@ -2,29 +2,29 @@ Simple Test : Windows : ChimbaBenchXPL A3 : 2026-04-13
 Fps (720p | 360p) . OS . Driver . Notes
 ======================================================================================
  NVIDIA GeForce RTX 5080 : AMD Ryzen 7 9800X3D 8-Core Processor
-7581 | 7813 . Windows 11 . 26200.6899 . 32.0.15.9621
+7581 | 7813 . Windows 11 . 26200.6899 . 32.0.15.9621 . (2026-04-25 - 18:15:15)
 
  NVIDIA GeForce RTX 5080 : AMD Ryzen 7 7800X3D 8-Core Processor
-3850 | 3945 . Windows 11 . 26200.8037 . 32.0.15.9597
-2983 | 3057. Windows 11 . 26200.8037 . 32.0.15.9579 . (with background tasks)
+3850 | 3945 . Windows 11 . 26200.8037 . 32.0.15.9597 . (2026-04-12 - 20:13:39)
+2983 | 3057 . Windows 11 . 26200.8037 . 32.0.15.9579 . (2026-04-06 - 14:28:14, with background tasks)
 
  NVIDIA GeForce RTX 5070 : AMD Ryzen 7 5800X 8-Core Processor
-3776 | 3540 . Windows 11 . 26200.7840 . 32.0.15.9186
+3776 | 3540 . Windows 11 . 26200.7840 . 32.0.15.9186 . (2026-04-11 - 15:33:02)
 
  NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 5 3500X 6-Core Processor
-3469 | 3434 . Windows 11 . 26200.8037 . 32.0.15.9159
+3469 | 3434 . Windows 11 . 26200.8037 . 32.0.15.9159 . (2026-04-12 - 16:55:32)
 
  NVIDIA GeForce GTX 1070 : Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
 2728 | 2703 . Windows 10 . 17763.615 . 31.0.15.5123
 
  NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 7 1700
-1995 | 1948. Windows 11 . 26200.8037 . 32.0.15.9159
+1995 | 1948. Windows 11 . 26200.8037 . 32.0.15.9159 . (2026-04-11 - 15:28:57)
 
  AMD Radeon RX 470 : Athlon II x2 245e : 8GB DDR2-800
 723 | 712 . Windows 7 . SP1 . Adrenalin 21.5.2
 
  Intel(R) UHD Graphics 630 : Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
-419 | 949 . Windows 10 . 19045.5371 . 31.0.101.2130
+419 | 949 . Windows 10 . 19045.5371 . 31.0.101.2130 . (2026-04-11 - 14:47:16)
 
  NVIDIA GeForce GT 520M : Intel(R) Core(TM) i5-2430M CPU @ 2.40GHz
-195 | 485 . Windows 10 . 19045.4291 . 23.21.13.8813
+195 | 485 . Windows 10 . 19045.4291 . 23.21.13.8813 . (2026-04-11 - 15:02:19)
