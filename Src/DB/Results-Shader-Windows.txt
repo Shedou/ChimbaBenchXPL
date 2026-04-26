@@ -1,6 +1,9 @@
 Shader Test : Windows : ChimbaBenchXPL A3 : 2026-04-13
 Fps (720p | 360p) . OS . Driver . Notes
 ======================================================================================
+ NVIDIA GeForce RTX 5080 : AMD Ryzen 7 9800X3D 8-Core Processor
+2574 | 4256 . Windows 11 . 26200.6899 . 32.0.15.9621
+
  NVIDIA GeForce RTX 5080 : AMD Ryzen 7 7800X3D 8-Core Processor
 3663 | 4205 . Windows 11 . 26200.8037 . 32.0.15.9597
 2435 | 3143 . Windows 11 . 26200.8037 . 32.0.15.9579 . (with background tasks)

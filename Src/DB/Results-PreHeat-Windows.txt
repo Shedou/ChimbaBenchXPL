@@ -1,6 +1,9 @@
 PreHeat Test : Windows : ChimbaBenchXPL A3 : 2026-04-13
 Fps (720p | 360p) . OS . Driver . Notes
 ======================================================================================
+ NVIDIA GeForce RTX 5080 : AMD Ryzen 7 9800X3D 8-Core Processor
+6571 | 6442 . Windows 11 . 26200.6899 . 32.0.15.9621
+
  NVIDIA GeForce RTX 5080 : AMD Ryzen 7 7800X3D 8-Core Processor
 4785 | 4808 . Windows 11 . 26200.8037 . 32.0.15.9597
 3723 | 3218 . Windows 11 . 26200.8037 . 32.0.15.9579 . (with background tasks)
