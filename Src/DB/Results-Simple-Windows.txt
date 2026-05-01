@@ -4,6 +4,9 @@ Fps (720p | 360p) . OS . Driver . Notes
  NVIDIA GeForce RTX 5080 : AMD Ryzen 7 9800X3D 8-Core Processor
 7581 | 7813 . Windows 11 . 26200.6899 . 32.0.15.9621 . (2026-04-25 - 18:15:15)
 
+ NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 5 7500F 6-Core Processor
+4391 | 4393 . Windows 11 . 26200.6899 . 32.0.15.9159 . (2026-05-01 - 04:29:46)
+
  NVIDIA GeForce RTX 5080 : AMD Ryzen 7 7800X3D 8-Core Processor
 3850 | 3945 . Windows 11 . 26200.8037 . 32.0.15.9597 . (2026-04-12 - 20:13:39)
 2983 | 3057 . Windows 11 . 26200.8037 . 32.0.15.9579 . (2026-04-06 - 14:28:14, with background tasks)

@@ -11,6 +11,9 @@ Fps (720p | 360p) . OS . Driver . Notes
  NVIDIA GeForce RTX 5070 : AMD Ryzen 7 5800X 8-Core Processor
 1780 | 3286 . Windows 11 . 26200.7840 . 32.0.15.9186 . (2026-04-11 - 15:33:02)
 
+ NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 5 7500F 6-Core Processor
+853 | 2034 . Windows 11 . 26200.6899 . 32.0.15.9159 . (2026-05-01 - 04:29:46)
+
  NVIDIA GeForce RTX 3070 Frankenstein : AMD Ryzen 5 3500X 6-Core Processor
 842 | 1979 . Windows 11 . 26200.8037 . 32.0.15.9159 . (2026-04-12 - 16:55:32)
 
